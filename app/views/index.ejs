@@ -1,0 +1,97 @@
+<!-- public/index.html -->
+<!doctype html>
+<html ng-app="contatooh">
+<head>
+	<meta name="viewport" content="width=device-width">
+	<meta charset="UTF-8">
+	<title>EncontredeTudo</title>
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap-theme.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<style type="text/css">
+
+		body{
+			padding-top: 70px;
+		}
+
+		.jumbotron {
+			margin-bottom: 72px;
+			margin-top: 50px;
+			color: inherit;
+			/* background-color: #eee; */
+			background: #fff;
+		}
+
+		.pnlPesquisa {
+			margin: 0 auto;
+			width: 50%;
+			height: 100px;
+		}
+
+		.img-rounded {
+			border-radius: 6px;
+			margin: 0 auto;
+			margin-left: 30%;
+		}
+
+	</style>
+
+</head>
+<body class="container">
+
+	<!-- NavBar -->
+	<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/#/pesquisacontato" target="_self">EncontredeTudo</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/#/pesquisacontato" target="_self">Home</a></li>
+					<li><a href="/#/cadastro_contato" target="_self">cadastre-se</a></li>
+					<li><a href="/#/login" target="_self">Login</a></li>
+					<li><a href="/#/contatos" target="_self">Administrativa</a></li>
+					
+					</ul>
+				</div>
+			</div>
+			<%if (usuarioLogado.length > 0) { %>
+					<div class="text-right">
+					<p style="color: #fff;">
+						Logado como: <span id="usuario-logado" style="color: #fff;">
+										<%=usuarioLogado %>
+									<span>
+						<a href="/logout" style="color: #fff;">[[Sair]]</a>
+					</p>
+				</div>
+			<% } %>
+
+		</nav>
+		<!-- Fim NavBar -->
+
+		<div ng-view></div>
+		<script src="vendor/angular/angular.js"></script>
+		<script src="vendor/angular-route/angular-route.js"></script>
+		<script src="vendor/angular-resource/angular-resource.js"></script>
+		<script src="js/main.js"></script>
+
+		<script src="js/services/ContatoService.js"></script>
+		<script src="js/services/InterceptorService.js"></script>
+
+		<script src="js/controllers/ContatosController.js"></script>
+		<script src="js/controllers/ContatoController.js"></script>
+		<!--Novo-->
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+-->	<!--Fim do novo-->
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!-- partials/contato.html -->
+<h1 class="text-center">Contato</h1>
+<p ng-show="mensagem.texto">
+	{{mensagem.texto}}
+</p>
+<form ng-submit="salva()">
+	<div class="form-group">
+		<label for="nome">Nome completo</label>
+		<input type="text" class="form-control" id="nome"
+		name="nome" required ng-model="contato.nome">
+	</div>
+	<div class="form-group">
+		<label for="endereco">Endereço</label>
+		<input type="text" class="form-control" id="endereco"
+		name="endereco" required ng-model="contato.endereco">
+	</div>
+	<div class="form-group">
+		<label for="cidade">Cidade</label>
+		<input type="text" class="form-control" id="cidade"
+		name="cidade" required ng-model="contato.cidade">
+	</div>
+	<div class="form-group">
+		<label for="estado">Estado</label>
+		<input type="text" class="form-control" id="estado"
+		name="endereco" required ng-model="contato.estado">
+	</div>
+
+	<div class="form-group">
+		<label for="telefone">Telefone</label>
+		<input type="number" class="form-control" id="telefone"
+		name="telefone" required ng-model="contato.telefone" ng-bind="phoneNumber | tel">
+	</div>		
+	<div class="form-group">
+		<label for="site">Site</label>
+		<input type="text" class="form-control" id="site"
+		name="site" required ng-model="contato.site">
+	</div>		
+	<div class="form-group">
+		<label for="email">Email</label>
+		<div class="input-group">
+			<span class="input-group-addon">@</span>
+			<input type="email" class="form-control" id="email"
+			placeholder="email@exemplo.com" name="email"
+			ng-model="contato.email" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="observacao">Observação:</label>
+		<input type="text" class="form-control" id="observacao"
+		name="observacao" required ng-model="contato.observacao">
+	</div>
+	<div>
+		<button type="submit" class="btn btn-primary">
+			Salvar
+		</button>
+		<a href="#/" class="btn btn-default">Voltar</a>
+	</div>
+</form>

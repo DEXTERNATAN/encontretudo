@@ -1,0 +1,86 @@
+
+<div class="container">
+  <div class="jumbotron">
+
+    <!-- <h1>Bem Vindo ao OndeEncontrar</h1>
+    <!-- <p>O que você procura ! Encontra aqui perto de você. Os mais variados pontos de negócio em restaurantes, bares, baladas, clínicas, petshop, imóveis, veículos, parques, bibliotecas, estéticas, shopping, lojas e muito mais…</p>
+    <p><a href="http://www.tutorialrepublic.com" target="_blank" class="btn btn-success btn-lg">Get started today</a></p>
+  -->
+  
+  <div class="col-md-12">
+    <img src="http://www.buscatudo.net/images/logo_buscatudo.jpg" alt="PegaTudo" class="img-responsive img-rounded">
+  </div>
+  
+  <div class="row pnlPesquisa">
+
+    <!-- Envia a informação com o nome do estabelecimento para pesquisa -->
+    <form class="navbar-form navbar-left" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)">
+      <div class="form-group">
+        <input type="text" class="form-control" id="pBusca" name="pBusca" style="width: 370px;" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca">
+      </div>
+      <!-- <button type="submit" class="btn btn-default" ng-click="remove()"> -->
+      <!-- <span class="glyphicon glyphicon-search"></span></button> -->
+      <button type="submit" class="btn btn-primary">Pesquisar</button>
+
+    </form>
+
+
+  </div> 
+</div>
+
+<!-- Painel com os valores preenchidos -->
+<div ng-show="mensagem.texto" class="row">
+  <p>Quantidade de contatos cadastrados: {{contatos.length}}</p>
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>#</th>
+        <th>Estabelecimento</th>
+        <th>Telefone</th>
+        <th>Site</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="contato in contatos">
+        <th scope="row">{{$index}}</th>
+        <td>{{contato.nome}}</td>
+        <td>{{contato.telefone}}</td>
+        <td><a href="{{contato.site}}" target="_blank">{{contato.site}}</a></td>
+        <td>{{contato.cidade}}</td>
+        <td>{{contato.estado}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<div class="row" ng-show="!mensagem.texto">
+  <div class="col-md-4">
+    <h2>Categorias</h2>
+    <p>Lista todas as principais categorias do site.</p>
+    <p><a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+  </div>
+  <div class="col-md-4">
+    <h2>Cidades</h2>
+    <p>Lista os comercios mais procurados por cidade.</p>
+    <p><a href="http://www.tutorialrepublic.com/css-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+  </div>
+  <div class="col-md-4">
+    <h2>Populares</h2>
+    <p>Lista os comercios mais procurados no site.</p>
+    <p><a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <footer>
+      <p>&copy; Copyright 2016 EncontredeTudo</p>
+    </footer>
+  </div>
+</div>
+</div>
