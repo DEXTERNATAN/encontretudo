@@ -21,5 +21,8 @@
     "mongoose": "^3.8.39",
     "passport": "^0.2.2",
     "passport-github": "^0.1.5"
-  }
+  },
+  "devDependencies": {},
+  "author": "natanael.leite",
+  "license": "ISC"
 }
