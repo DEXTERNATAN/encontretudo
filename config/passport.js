@@ -26,7 +26,7 @@ module.exports = function() {
 
 	}, function(accessToken, refreshToken, profile, done) {
 
-		Usuario.findOrCreate(
+		/*Usuario.findOrCreate(
 
 			{
 				"login": profile.username
@@ -40,7 +40,7 @@ module.exports = function() {
 				}
 				return done(null, usuario);
 			}
-		);
+		);*/
 
 	}));
 
