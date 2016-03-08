@@ -27,7 +27,7 @@ module.exports = function(app) {
 		.get(controller.listaContatos);
 
 	app.route('/contatos')
-		.get(verificaAutenticacao, controller.listaContatos)
+		.get(controller.listaContatos)
 		.post(controller.salvaContato);
 
 	app.route('/contatos/:id')
