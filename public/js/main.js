@@ -26,6 +26,12 @@ angular.module('contatooh', ['ngRoute', 'ngResource'])
 	});
 
 	// Tela que exibe os resultados da busca
+	$routeProvider.when('/importacontato', {
+		templateUrl: 'partials/importar.html',
+		controller: 'ContatosController'
+	});
+
+	// Tela que exibe os resultados da busca
 	$routeProvider.when('/listageral', {
 		templateUrl: 'partials/listageral.html',
 		controller: 'ContatoController'

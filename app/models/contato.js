@@ -5,12 +5,16 @@ module.exports = function() {
 			type: String,
 			required: true
 		},
+		categoria: {
+			type: String,
+			required: true
+		},
 		endereco: {
 			type: String,
 			required: true
 		},
 		telefone: {
-			type: Number,
+			type: String,
 			required: true
 		},
 		email: {

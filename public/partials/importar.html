@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="jumbotron">
+  <p ng-show="mensagem.texto">Resultado da importação: <span style="color: red;">{{mensagem.texto}}</span></p>
+   <h1>Bem Vindo ao OndeEncontrar</h1>
+    <p>O que você procura ! Encontra aqui perto de você. Os mais variados pontos de negócio em restaurantes, bares, baladas, clínicas, petshop, imóveis, veículos, parques, bibliotecas, estéticas, shopping, lojas e muito mais…</p>
+    <!-- <p><a href="http://www.tutorialrepublic.com" target="_blank" class="btn btn-success btn-lg">Get started today</a></p> -->
+    <div class="row pnlPesquisa">
+
+    <!-- Envia a informação com o nome do estabelecimento para pesquisa -->
+    <form class="navbar-form navbar-left" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="ImportarContato(formPesquisarcontato)">
+      <div class="form-group">
+        <!-- <input type="text" class="form-control" id="pBusca" name="pBusca" style="width: 370px;" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca"> -->
+      </div>
+      <!-- <button type="submit" class="btn btn-default" ng-click="remove()"> -->
+      <!-- <span class="glyphicon glyphicon-search"></span></button> -->
+      <button type="submit" class="btn btn-primary">Importar dados</button>
+
+    </form>
+
+
+  </div>
+  
+  </div>
+</div>
