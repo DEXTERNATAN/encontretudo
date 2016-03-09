@@ -5,46 +5,54 @@
 	<meta name="viewport" content="width=device-width">
 	<meta charset="UTF-8">
 	<title>EncontredeTudo</title>
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css">
+	<!-- <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap-theme.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<style type="text/css">
+-->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-		body{
-			padding-top: 70px;
-		}
+<style type="text/css">
 
-		.jumbotron {
-			margin-bottom: 72px;
-			margin-top: 50px;
-			color: inherit;
-			/* background-color: #eee; */
-			background: #fff;
-		}
+	body{
+		padding-top: 70px;
+	}
 
-		.pnlPesquisa {
-			margin: 0 auto;
-			width: 50%;
-			height: 100px;
-		}
+	.jumbotron {
+		margin-bottom: 72px;
+		margin-top: 50px;
+		color: inherit;
+		/* background-color: #eee; */
+		background: #fff;
+	}
 
-		.img-rounded {
-			border-radius: 6px;
-			margin: 0 auto;
-			margin-left: 30%;
-		}
+	.pnlPesquisa {
+		margin: 0 auto;
+		width: 50%;
+		height: 100px;
+	}
 
-	</style>
+	.img-rounded {
+		border-radius: 6px;
+		margin: 0 auto;
+		margin-left: 30%;
+	}
+
+</style>
 
 </head>
 <body class="container">
+
 
 	<!-- NavBar -->
 	<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -59,23 +67,50 @@
 					<li><a href="/#/cadastro_contato" target="_self">cadastre-se</a></li>
 					<li><a href="/#/login" target="_self">Login</a></li>
 					<li><a href="/#/contatos" target="_self">Administrativa</a></li>
-					
-					</ul>
-				</div>
+
+				</ul>
 			</div>
-			<%if (usuarioLogado.length > 0) { %>
-					<div class="text-right">
-					<p style="color: #fff;">
-						Logado como: <span id="usuario-logado" style="color: #fff;">
-										<%=usuarioLogado %>
-									<span>
-						<a href="/logout" style="color: #fff;">[[Sair]]</a>
-					</p>
-				</div>
+		</div>
+		<%if (usuarioLogado.length > 0) { %>
+		<div class="text-right">
+			<p style="color: #fff;">
+				Logado como: <span id="usuario-logado" style="color: #fff;">
+				<%=usuarioLogado %>
+				<span>
+					<a href="/logout" style="color: #fff;">[[Sair]]</a>
+				</p>
+			</div>
 			<% } %>
 
 		</nav>
 		<!-- Fim NavBar -->
+
+
+		<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Tutorial Republic</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/#/pesquisacontato" target="_self">Home</a></li>
+						<li><a href="/#/cadastro_contato" target="_self">cadastre-se</a></li>
+						<li><a href="/#/login" target="_self">Login</a></li>
+						<li><a href="/#/contatos" target="_self">Administrativa</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
 
 		<div ng-view></div>
 		<script src="vendor/angular/angular.js"></script>
@@ -89,9 +124,9 @@
 		<script src="js/controllers/ContatosController.js"></script>
 		<script src="js/controllers/ContatoController.js"></script>
 		<!--Novo-->
-<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
--->	<!--Fim do novo-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<!--Fim do novo-->
 
-</body>
-</html>
+	</body>
+	</html>
