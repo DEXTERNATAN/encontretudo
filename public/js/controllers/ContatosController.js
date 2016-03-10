@@ -1,7 +1,6 @@
 angular.module('contatooh').controller('ContatosController', 
 	function(Contato, $scope, $resource, $http){
 
-
 		$scope.contatos = [];
 		$scope.empresas = [];		
 		$scope.filtro = '';

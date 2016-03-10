@@ -24,8 +24,8 @@ module.exports = function(app){
 	.get(controller.listaContatos)
 	.post(controller.ImportarContato);
 
-	app.route('/cadastro_contato')
-	.get(controller.listaContatos);
+	app.route('/cadastro_usuario')
+	.get(controller.cadastraUsuario);
 
 	app.route('/login')
 	.get(controller.listaContatos);
@@ -35,6 +35,10 @@ module.exports = function(app){
 	.post(controller.salvaContato);
 	
 	app.route('/contatos/:id')
+	.get(controller.obtemContato)
+	.delete(controller.removeContato);
+
+	app.route('/cadastro_usuario/:id')
 	.get(controller.obtemContato)
 	.delete(controller.removeContato);
 

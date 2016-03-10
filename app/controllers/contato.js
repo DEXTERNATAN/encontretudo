@@ -55,7 +55,7 @@ module.exports = function (app) {
 		var data = req.body;
 		var q = data.query;
 	
-		Contato.find({"nome": {'$regex': q}}).exec()
+		Contato.find({"nome": { $regex : new RegExp(q, "i") }}).exec()
 		.then(function(results){
 			res.json(results);
 		}, function(){
@@ -65,6 +65,12 @@ module.exports = function (app) {
 		//res.json({ data: "teste"});
 
 	};
+	
+	// Metodo para cadastrar os usuarios que querem entrear no portal	
+	controller.cadastraUsuario = function(req, res){
+		var data = req.body;
+		console.log("Cheguei no controller" + data);
+	}
 
 	// Método para Adicionar contatos importando de uma base diferente para dentro do site
 	controller.ImportarContato = function(req, res){

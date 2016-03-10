@@ -43,9 +43,9 @@ angular.module('contatooh', ['ngRoute', 'ngResource'])
 		controller: 'ContatoController'
 	});
 
-	$routeProvider.when('/cadastro_contato', {
-		templateUrl: 'partials/cadastro_contato.html',
-		controller: 'ContatoController'
+	$routeProvider.when('/cadastro_usuario', {
+		templateUrl: 'partials/cadastro_usuario.html',
+		controller: 'UsuariosController'
 	});
 
 	$routeProvider.when('/login', {
@@ -56,8 +56,6 @@ angular.module('contatooh', ['ngRoute', 'ngResource'])
 	$routeProvider.when('/auth', {
 		templateUrl: 'partials/auth.html'
 	});
-
-
 
 	$routeProvider.otherwise({redirectTo: '/pesquisacontato'});
 

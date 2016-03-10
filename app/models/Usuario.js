@@ -5,6 +5,13 @@ var findOrCreate = require('mongoose-findorcreate');
 
 module.exports = function() {
 	var schema = mongoose.Schema({
+		nome: {
+			type: String,
+			required: true,
+			index: {
+				unique: true
+			}
+		},
 		login: {
 			type: String,
 			required: true,
@@ -12,9 +19,13 @@ module.exports = function() {
 				unique: true
 			}
 		},
-		nome: {
+		password: {
 			type: String,
-			required: true,
+			required: false,
+		},
+		email: {
+			type: String,
+			required: false,
 		},
 		inclusao: {
 			type: Date,
