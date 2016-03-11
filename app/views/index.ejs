@@ -62,18 +62,19 @@
 					<li><a href="/#/pesquisacontato" target="_self"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 					<li><a href="/#/contatos" target="_self"><span class="glyphicon glyphicon-briefcase"></span> Administrativa</a></li>
 					<li><a href="/#/cadastro_usuario" target="_self"><span class="glyphicon glyphicon-user"></span> cadastre-se</a></li>
-					<li><a href="/#/login" target="_self"><span class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
+					<li ng-show="!<%=usuarioLogado.length %>"><a href="/#/login" target="_self"><span class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
+	<!-- <p style="color: black;">Valor: <%=usuarioLogado.length %></p> -->
 	<%if (usuarioLogado.length > 0) { %>
 	<div class="text-right">
-		<p style="color: #fff;">
-			Logado como: <span id="usuario-logado" style="color: #fff;">
+		<p style="color: red;">
+			Logado como: <span id="usuario-logado" style="color: red;">
 			<%=usuarioLogado %>
 			<span>
-				<a href="/logout" style="color: #fff;">[[Sair]]</a>
+				<a href="/logout" style="color: red;">[[Sair]]</a>
 			</p>
 		</div>
 		<% } %>
