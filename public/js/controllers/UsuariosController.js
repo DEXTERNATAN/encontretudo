@@ -22,7 +22,7 @@ angular.module('contatooh').controller('UsuariosController',
 					console.log("Veio do servidor: " + data);
 					if (!data.length)
 	                	$scope.mensagem = {
-							texto: "Usuario e senha não cadastrados."
+							texto: "Usuario e senha incorretos."
 						};
 					
 					if (data.length)
@@ -46,6 +46,10 @@ angular.module('contatooh').controller('UsuariosController',
 			
 			$http.post("/cadusuario", $scope.usuario).success(function (data) {
 				console.log("Sucesso" + data);
+				
+	                	$scope.mensagem = {
+							texto: "Usuario cadastrado com sucesso !!!"
+						};
 			}).error(function (data) {
 				console.log("Error" + $scope.usuario);
 			})
