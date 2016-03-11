@@ -60,6 +60,7 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="nav navbar-nav">
 					<li><a href="/#/pesquisacontato" target="_self"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<!-- No futuro somente mostrar a area administrativa para o usuario administrador do portal -->
 					<li><a href="/#/contatos" target="_self"><span class="glyphicon glyphicon-briefcase"></span> Administrativa</a></li>
 					<li><a href="/#/cadastro_usuario" target="_self"><span class="glyphicon glyphicon-user"></span> cadastre-se</a></li>
 					<li ng-show="!<%=usuarioLogado.length %>"><a href="/#/login" target="_self"><span class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
