@@ -50,7 +50,7 @@ angular.module('contatooh', ['ngRoute', 'ngResource'])
 
 	$routeProvider.when('/login', {
 		templateUrl: 'partials/login.html',
-		controller: 'ContatoController'
+		controller: 'UsuariosController'
 	});
 
 	$routeProvider.when('/auth', {

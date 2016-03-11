@@ -8,18 +8,20 @@
  
                     <div style="padding-top:30px" class="panel-body" >
  
-                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        <div ng-show="mensagem.texto" id="login-alert" class="alert alert-danger col-sm-12">
+                            {{mensagem.texto}}
+                        </div>
                             
-                        <form id="loginform" class="form-horizontal" role="form">
+                        <form id="loginform" class="form-horizontal" role="form" ng-submit="loginUsuario(loginform)">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Usuário">                                        
+                                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Usuário" ng-model="usuario.login">                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" name="password" placeholder="Senha">
+                                        <input id="login-password" type="password" class="form-control" name="password" placeholder="Senha" ng-model="usuario.password">
                                     </div>
                                     
  
@@ -37,7 +39,8 @@
                                     <!-- Button -->
  
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                                      <!-- <a id="btn-login" href="#" class="btn btn-success">Login  </a> -->
+                                      <button id="btn-login" type="submit" class="btn btn-success"><i class="icon-hand-right"></i> Login</button>
                                       <!--<a id="btn-fblogin" href="#" class="btn btn-primary">Login com Facebook</a>-->
  
                                     </div>

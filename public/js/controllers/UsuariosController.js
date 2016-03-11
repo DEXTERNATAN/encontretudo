@@ -1,9 +1,42 @@
 angular.module('contatooh').controller('UsuariosController', 
-	function(Usuario, $scope, $resource, $http){
+	function(Usuario, $scope, $resource, $http, $location){
 
 		$scope.usuarios = [];
 		$scope.mensagem = {texto: ''};
 		
+		$scope.loginUsuario = function() {
+			var objeto = {username: $scope.usuario.login, senha: $scope.usuario.password};
+			console.log("Enviando: " + JSON.stringify(objeto));           
+			// Usar para debugar a aplicação.
+			//debugger;
+			$http.post('/logar',objeto)
+				.success(function(data,status) {
+
+					var token = btoa("{\"username\" : \"" 
+						+ $scope.usuario.login 
+						+ "\", \"senha\" : \"" 
+						+ $scope.usuario.password + "\"}");
+
+					$http.defaults.headers.common.Authorization = 'BASIC ' + token;
+					sessionStorage.token = token;
+					console.log("Veio do servidor: " + data);
+					if (!data.length)
+	                	$scope.mensagem = {
+							texto: "Usuario e senha não cadastrados."
+						};
+					
+					if (data.length)
+	                	$location.path("/contatos");
+						
+					//console.log("Login OK" + token);
+					//window.location.href = "/contatos";
+
+				})
+				.error(function(data, status) {
+					
+				});
+		};
+
 		// Função para cadastrar o usuario na base de dados
 		$scope.cadastraUsuario = function(){
 			
@@ -20,4 +53,4 @@ angular.module('contatooh').controller('UsuariosController',
 			
 		}
 
-});
+	});
