@@ -14,8 +14,7 @@ angular.module('contatooh').controller('UsuariosController',
 			console.log("Enviando: " + JSON.stringify(objeto));
 			// Usar para debugar a aplicação.
 			//debugger;
-			$http.post('/logar', objeto)
-				.success(function(data, status) {
+			$http.post('/logar', objeto).success(function(data, status) {
 
 					var token = btoa("{\"username\" : \"" + $scope.usuario.login +
 						"\", \"senha\" : \"" + $scope.usuario.password + "\"}");
@@ -36,7 +35,7 @@ angular.module('contatooh').controller('UsuariosController',
 
 				})
 				.error(function(data, status) {
-
+					console.log("Errorooooo" + data.mensagem);
 				});
 		};
 
