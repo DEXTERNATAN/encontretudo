@@ -14,14 +14,17 @@
 				console.log("Enviando: " + JSON.stringify(objeto));
 				// Usar para debugar a aplicação.
 				//debugger;
-				$http.post('/logar', objeto).success(function(data, status) {
+				$http.post("/cadusuario", $scope.usuario).success(function(data) {
+					console.log("Sucesso" + data);
 
-						console.log("Veio do servidor: " + data);
+					$scope.mensagem = {
+						texto: "Usuario cadastrado com sucesso !!!"
+					};
 
-					})
-					.error(function(data, status) {
-						console.log("Errorooooo" + data.mensagem);
-					});
+				}).error(function(data) {
+					console.log("Error" + $scope.usuario);
+				})
+
 			};
 
 			// Função para cadastrar o usuario na base de dados
