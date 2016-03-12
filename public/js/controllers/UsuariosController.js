@@ -29,6 +29,7 @@
 
 						if (data.length)
 							$location.path("/contatos");
+
 						//console.log("Login OK" + token);
 						//window.location.href = "/contatos";
 
