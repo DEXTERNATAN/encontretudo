@@ -7,13 +7,21 @@
 			};
 
 			$scope.loginUsuario = function() {
-
 				var objeto = {
 					username: $scope.usuario.login,
 					senha: $scope.usuario.password
 				};
 				console.log("Enviando: " + JSON.stringify(objeto));
+				// Usar para debugar a aplicação.
+				//debugger;
+				$http.post('/logar', objeto).success(function(data, status) {
 
+						console.log("Veio do servidor: ");
+
+					})
+					.error(function(data, status) {
+						console.log("Errorooooo" + data.mensagem);
+					});
 			};
 
 			// Função para cadastrar o usuario na base de dados
