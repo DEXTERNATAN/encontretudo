@@ -16,7 +16,7 @@
 				//debugger;
 				$http.post('/logar', objeto).success(function(data, status) {
 
-						console.log("Veio do servidor: ");
+						console.log("Veio do servidor: " + data);
 
 					})
 					.error(function(data, status) {
