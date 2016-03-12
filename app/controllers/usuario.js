@@ -28,27 +28,17 @@ module.exports = function(app) {
 	};
 
 	// Função para cadastrar o usuario na base de dados
-	//controller.cadastraUsuario = function(req, res) {
+	controller.cadastraUsuario = function(req, res) {
 
-	//var data = req.body;
-	//console.log("valor: " + data );
-	// Imprime o objeto json ou javascript
-	//console.log("object: %o", req.body);
-	//res.status(201).json("object: %o", data);
-	//Usuario.create(data)
-	//.then(
-	/*function(data) {
-					res.status(201).json(data);
-				},
-				function(erro) {
-					console.log(erro);
-					res.status(500).json(erro);
-				}
-			);*/
+		var data = req.body;
+		//console.log("valor: " + data );
+		// Imprime o objeto json ou javascript
+		//console.log("object: %o", req.body);
+		res.status(201).json("object: %o", data);
 
-};
+	};
 
 
-return controller;
+	return controller;
 
 };
