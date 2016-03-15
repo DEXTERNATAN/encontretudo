@@ -34,12 +34,12 @@
 		<label for="telefone">Telefone</label>
 		<input type="text" class="form-control" id="telefone"
 		name="telefone" required ng-model="contato.telefone" >
-	</div>		
+	</div>
 	<div class="form-group">
 		<label for="site">Site</label>
 		<input type="text" class="form-control" id="site"
 		name="site" required ng-model="contato.site">
-	</div>		
+	</div>
 	<div class="form-group">
 		<label for="email">Email</label>
 		<div class="input-group">
@@ -51,8 +51,10 @@
 	</div>
 	<div class="form-group">
 		<label for="observacao">Observação:</label>
-		<input type="text" class="form-control" id="observacao"
-		name="observacao" required ng-model="contato.observacao">
+		<!-- <input type="text" class="form-control" id="observacao"
+		name="observacao" required ng-model="contato.observacao"> -->
+		<textarea class="form-control" rows="5" id="observacao"
+		name="observacao" required ng-model="contato.observacao"></textarea>
 	</div>
 	<div>
 		<button type="submit" class="btn btn-primary">
