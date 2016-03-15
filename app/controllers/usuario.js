@@ -10,6 +10,16 @@ module.exports = function(app) {
 		// Recebendo o paramentro do controller da view
 		var data = req.body;
 
+		Usuario.find().exec()
+			.then(
+				function(data) {
+					res.json(data);
+				},
+				function(erro) {
+					console.error(erro)
+					res.status(500).json(erro);
+				}
+			);
 		// Verificando se o usuario existe na base de dados
 
 		// Devolvendo uma respota do servidor
