@@ -11,19 +11,9 @@ module.exports = function(app) {
 		var data = req.body;
 
 		// Verificando se o usuario existe na base de dados
-		Usuario.find({
-				"nome": {
-					$regex: new RegExp(data, "i")
-				}
-			}).exec()
-			.then(function(sucesso) {
-				res.status(201).json(data);
-			}, function(error) {
-				res.status(500).json(data);
-			});
 
 		// Devolvendo uma respota do servidor
-		//res.status(201).json(data);
+		res.status(201).json("Usuario: " + Usuario);
 	};
 
 	// Função para cadastrar o usuario na base de dados
