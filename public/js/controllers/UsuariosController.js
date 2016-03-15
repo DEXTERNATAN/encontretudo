@@ -1,5 +1,5 @@
 angular.module('contatooh').controller('UsuariosController',
-	function(Usuario, $scope, $resource, $http) {
+	function(Usuario, $scope, $resource, $http, $location) {
 
 		$scope.usuarios = [];
 		$scope.mensagem = {
