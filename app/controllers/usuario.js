@@ -12,15 +12,14 @@ module.exports = function(app) {
 
 		// Verificando se o usuario existe na base de dados
 		Usuario.find({
-				"email": data.username
+				"nome": {
+					$regex: new RegExp(data, "i")
+				}
 			}).exec()
-			.then(function(data) {
+			.then(function(sucesso) {
 				res.status(201).json(data);
-			}, function() {
-				res.json({
-					code: 500,
-					mensagem: 'Erro desconhecido'
-				});
+			}, function(error) {
+				res.status(500).json(data);
 			});
 
 		// Devolvendo uma respota do servidor
