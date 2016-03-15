@@ -1,48 +1,63 @@
-		angular.module('contatooh').controller('UsuariosController',
-				function(Usuario, $scope, $resource, $http, $location) {
+angular.module('contatooh').controller('UsuariosController',
+	function(Usuario, $scope, $resource, $http, $location) {
 
-					$scope.usuarios = [];
-					$scope.mensagem = {
-						texto: ''
-					};
+		$scope.usuarios = [];
+		$scope.mensagem = {
+			texto: ''
+		};
 
-					$scope.loginUsuario = function() {
+		$scope.loginUsuario = function() {
+			var objeto = {
+				username: $scope.usuario.login,
+				senha: $scope.usuario.password
+			};
+			console.log("Enviando: " + JSON.stringify(objeto));
+			// Usar para debugar a aplicação.
+			//debugger;
+			$http.post('/logar', objeto)
+				.success(function(data, status) {
 
-						var objeto = {
-							username: $scope.usuario.login,
-							senha: $scope.usuario.password
+					var token = btoa("{\"username\" : \"" + $scope.usuario.login +
+						"\", \"senha\" : \"" + $scope.usuario.password + "\"}");
+
+					$http.defaults.headers.common.Authorization = 'BASIC ' + token;
+					sessionStorage.token = token;
+					console.log("Veio do servidor: " + data);
+					if (!data.length)
+						$scope.mensagem = {
+							texto: "Usuario e senha incorretos."
 						};
 
-						console.log("Enviando: " + JSON.stringify(objeto));
+					if (data.length)
+						$location.path("/contatos");
 
-						$http.post("/cadusuario", $scope.usuario).success(function(objeto) {
-								console.log("Sucesso" + data);
+					//console.log("Login OK" + token);
+					//window.location.href = "/contatos";
 
-								$scope.mensagem = {
-									texto: "Usuario cadastrado com sucesso !!!"
-								};
+				})
+				.error(function(data, status) {
 
-							};
+				});
+		};
 
-							// Função para cadastrar o usuario na base de dados
-							$scope.cadastraUsuario = function() {
+		// Função para cadastrar o usuario na base de dados
+		$scope.cadastraUsuario = function() {
 
-								console.log("Debug: Cheguei no login " + $scope.usuario.login);
-								console.log("Debug: Cheguei no password " + $scope.usuario.password);
-								console.log("Debug: Cheguei no email " + $scope.usuario.email);
+			console.log("Debug: Cheguei no login " + $scope.usuario.login);
+			console.log("Debug: Cheguei no password " + $scope.usuario.password);
+			console.log("Debug: Cheguei no email " + $scope.usuario.email);
 
-								$http.post("/cadusuario", $scope.usuario).success(function(data) {
-									console.log("Sucesso" + data);
+			$http.post("/cadusuario", $scope.usuario).success(function(data) {
+				console.log("Sucesso" + data);
 
-									$scope.mensagem = {
-										texto: "Usuario cadastrado com sucesso !!!"
-									};
+				$scope.mensagem = {
+					texto: "Usuario cadastrado com sucesso !!!"
+				};
+			}).error(function(data) {
+				console.log("Error" + $scope.usuario);
+			})
 
-								}).error(function(data) {
-									console.log("Error" + $scope.usuario);
-								})
 
+		}
 
-							}
-
-						});
+	});
