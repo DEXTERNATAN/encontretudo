@@ -17,6 +17,6 @@ module.exports = function(app) {
 		.post(controller.cadastraUsuario);
 
 	app.route('/logar')
-		.post(controller.cadastraUsuario);
+		.post(controller.loginUsuario);
 
 };
