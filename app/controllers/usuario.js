@@ -8,7 +8,7 @@ module.exports = function(app) {
 	controller.loginUsuario = function(req, res) {
 
 		// Recebendo o paramentro do controller da view
-		//var data = req.body;
+		var data = req.body;
 
 		// Verificando se o usuario existe na base de dados
 		/*Usuario.find({
@@ -24,7 +24,7 @@ module.exports = function(app) {
 			});*/
 
 		// Devolvendo uma respota do servidor
-		res.status(201).json("JSON.stringify(data.username)");
+		res.status(201).json(data);
 	};
 
 	// Função para cadastrar o usuario na base de dados
