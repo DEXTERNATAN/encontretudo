@@ -8,10 +8,10 @@ module.exports = function(app) {
 	controller.loginUsuario = function(req, res) {
 
 		// Recebendo o paramentro do controller da view
-		var data = req.body;
+		//var data = req.body;
 
 		// Verificando se o usuario existe na base de dados
-		Usuario.find({
+		/*Usuario.find({
 				"email": data.username
 			}).exec()
 			.then(function(data) {
@@ -21,10 +21,10 @@ module.exports = function(app) {
 					code: 500,
 					mensagem: 'Erro desconhecido'
 				});
-			});
+			});*/
 
 		// Devolvendo uma respota do servidor
-		//res.status(201).json(JSON.stringify(data.username));
+		res.status(201).json("JSON.stringify(data.username)");
 	};
 
 	// Função para cadastrar o usuario na base de dados
