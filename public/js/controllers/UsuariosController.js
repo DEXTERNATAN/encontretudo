@@ -1,5 +1,5 @@
 angular.module('contatooh').controller('UsuariosController',
-	function(Usuario, $scope, $resource, $http, $location) {
+	function(Usuario, $scope, $resource, $http) {
 
 		$scope.usuarios = [];
 		$scope.mensagem = {
@@ -20,8 +20,6 @@ angular.module('contatooh').controller('UsuariosController',
 					var token = btoa("{\"username\" : \"" + $scope.usuario.login +
 						"\", \"senha\" : \"" + $scope.usuario.password + "\"}");
 
-					$http.defaults.headers.common.Authorization = 'BASIC ' + token;
-					sessionStorage.token = token;
 					console.log("Veio do servidor: " + data);
 					if (!data.length)
 						$scope.mensagem = {

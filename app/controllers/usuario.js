@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-	var Usuario = app.models.usuario;
+	var Usuario = app.models.Usuario;
 	var controller = {};
 	console.log("Cheguei no controller do usuarios");
 
