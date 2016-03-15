@@ -12,9 +12,9 @@ module.exports = function(app) {
 	var controller = app.controllers.usuario;
 
 	console.log("Cheguei no route do suario");
-
-	app.route('/cadusuario')
-		.post(controller.cadastraUsuario);
+	/*
+		app.route('/cadusuario')
+		.post(controller.cadastraUsuario);*/
 
 	app.route('/logar')
 		.post(controller.loginUsuario);
