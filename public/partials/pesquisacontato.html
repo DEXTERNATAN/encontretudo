@@ -10,23 +10,16 @@
 
   <!-- Conteudo -->
   <div class="row">
-    <div class="col-md-4">
 
-    </div>
-    <div class="col-md-4">
-      <form class="ng-pristine ng-invalid ng-invalid-required" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)">
-        <div class="form-group">
-          <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required="" ng-model="pBusca">
-          <button type="submit" class="btn btn-primary">Pesquisar</button>
-        </div>
-      </form>
-    </div>
-    <div class="col-md-4">
-
-    </div>
-
+    <form class="form-inline" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)">
+      <div class="col-md-offset-4">
+        <input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca">
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+      </div>
+    </form>
 
   </div>
+
   <!-- Footer -->
   <div class="row">
    <!--  <p>Footer</p> -->
