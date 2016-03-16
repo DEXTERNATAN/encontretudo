@@ -34,53 +34,78 @@
   <table class="table">
     <thead class="thead-inverse">
       <tr>
-        <th>#</th>
+        <!-- <th>#</th> -->
         <th>Estabelecimento</th>
         <th>Telefone</th>
         <th>Site</th>
         <th>Cidade</th>
         <th>Estado</th>
+        <th>Redes Sociais</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="contato in contatos">
-        <th scope="row">{{$index}}</th>
+        <!-- <th scope="row">{{$index}}</th> -->
         <td>{{contato.nome}}</td>
         <td>{{contato.telefone}}</td>
-        <td><a href="{{contato.site}}" target="_blank">{{contato.site}}</a></td>
+        <td><a href="{{contato.site}}" target="_blank">Acesse o site</a></td>
         <td>{{contato.cidade}}</td>
         <td>{{contato.estado}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+        <td>
+
+          <a class="btn btn-social-icon btn-facebook">
+            <span class="fa fa-facebook"></span>
+          </a>
+
+          <a class="btn btn-social-icon  btn-twitter ">
+            <Span class = "fa fa-twitter"> </ span>
+          </a>
+
+          <a class="btn btn-social-icon  btn-google ">
+            <Span class = "fa fa-google"> </ span>
+          </a>
+
+          <a class="btn btn-social-icon  btn-instagram ">
+            <Span class = "fa fa-instagram"> </ span>
+          </a>
+
+          </td>
+          <!-- <td>{{contato._id}}--Visualizar</td> -->
+          <td>
+            <a ng-href="#/visualizar/{{contato._id}}">Visualizar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
 
-<div class="row" ng-show="!filtro">
-  <div class="col-md-4">
-    <h2>Categorias</h2>
-    <p>Lista todas as principais categorias do site.</p>
-    <p><a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+  <div class="row" ng-show="!filtro">
+    <div class="col-md-4">
+      <h2>Categorias</h2>
+      <p>Lista todas as principais categorias do site.</p>
+      <p><a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Cidades</h2>
+      <p>Lista os comercios mais procurados por cidade.</p>
+      <p><a href="http://www.tutorialrepublic.com/css-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Populares</h2>
+      <p>Lista os comercios mais procurados no site.</p>
+      <p><a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+    </div>
   </div>
-  <div class="col-md-4">
-    <h2>Cidades</h2>
-    <p>Lista os comercios mais procurados por cidade.</p>
-    <p><a href="http://www.tutorialrepublic.com/css-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
-  </div>
-  <div class="col-md-4">
-    <h2>Populares</h2>
-    <p>Lista os comercios mais procurados no site.</p>
-    <p><a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
-  </div>
-</div>
 
-<hr>
-<div class="row">
-  <div class="col-xs-12">
-    <footer>
-      <p>&copy; Copyright 2016 EncontredeTudo</p>
-    </footer>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <footer>
+        <p>&copy; Copyright 2016 EncontredeTudo</p>
+      </footer>
+    </div>
   </div>
-</div>
 </div>
