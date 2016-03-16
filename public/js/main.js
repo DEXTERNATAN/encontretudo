@@ -25,6 +25,12 @@ angular.module('contatooh', ['ngRoute', 'ngResource'])
 		controller: 'ContatosController'
 	});
 
+	// tela para visualizar dados do contato
+	$routeProvider.when('/visualizar/:contatoId', {
+		templateUrl: 'partials/visualizar_contato.html',
+		controller: 'ContatoController'
+	});
+
 	// Tela que exibe os resultados da busca
 	$routeProvider.when('/importacontato', {
 		templateUrl: 'partials/importar.html',

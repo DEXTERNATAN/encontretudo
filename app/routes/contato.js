@@ -1,10 +1,10 @@
 // Verifica se o usuario está logado
 function verificaAutenticacao(req, res, next) {
-if (req.isAuthenticated()) {
-return next();
-} else {
-res.status('401').json('Não autorizado');
-}
+	if (req.isAuthenticated()) {
+		return next();
+	} else {
+		res.status('401').json('Não autorizado');
+	}
 }
 
 module.exports = function(app){
@@ -35,6 +35,10 @@ module.exports = function(app){
 	.post(controller.salvaContato);
 	
 	app.route('/contatos/:id')
+	.get(controller.obtemContato)
+	.delete(controller.removeContato);
+
+	app.route('/visualizar/:id')
 	.get(controller.obtemContato)
 	.delete(controller.removeContato);
 
