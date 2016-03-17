@@ -2,45 +2,45 @@
 
  /* Table Base */
 
-  table {
-    max-width: 100%;
-    background-color: transparent;
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-family: arial;
-  }
+ table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: arial;
+}
 
-  .table {
-    border-bottom: #999999 solid 1px;
-    width: 100%;
-    margin-bottom: 20px;
-  }
+.table {
+  border-bottom: #999999 solid 1px;
+  width: 100%;
+  margin-bottom: 20px;
+}
 
-  .table th,
-  .table td {
-    border-right: #999999 solid 1px;
-    font-size: 12px;
-    padding: 8px;
-    line-height: 20px;
-    text-align: left;
-    vertical-align: middle;
-  }
+.table th,
+.table td {
+  border-right: #999999 solid 1px;
+  font-size: 12px;
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: middle;
+}
 
-  .table td:last-child {
-     border-right: 0;
-  }
+.table td:last-child {
+ border-right: 0;
+}
 
-  .table thead th {
-    font-weight: normal;
-    background-color: #005dab;
-    color: #fff;
-    font-size: 15px;
-  }
+.table thead th {
+  font-weight: normal;
+  background-color: #005dab;
+  color: #fff;
+  font-size: 15px;
+}
 
-  .table tbody > tr:nth-child(odd) > td,
-  .table tbody > tr:nth-child(odd) > th {
-    background-color: #f8f8f8;
-  }
+.table tbody > tr:nth-child(odd) > td,
+.table tbody > tr:nth-child(odd) > th {
+  background-color: #f8f8f8;
+}
 
 
 /* Small Sizes */
@@ -83,8 +83,8 @@
 
 
   .table td:last-child {
-     border-right: #999999 solid 1px;
-  }
+   border-right: #999999 solid 1px;
+ }
 
 
 }
@@ -109,24 +109,24 @@
         <form role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)" class="form-horizontal" style="margin: 0 auto;" >
 
 <!--         <form class="navbar-form navbar-left" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)">
- -->
+-->
 
-          <div class="control-group">
-            <div class="controls">
-              <input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca" />
-            </div>
-            <br />
-            <button type="submit" class="btn btn-primary">Pesquisar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2">
+<div class="control-group">
+  <div class="controls">
+    <input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca" />
   </div>
   <br />
+  <button type="submit" class="btn btn-primary">Pesquisar</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="col-md-2">
+</div>
+<br />
 
-  <!-- RESPONSIVE TABLE -->
+<!-- RESPONSIVE TABLE -->
 <div ng-show="mensagem.texto" class="row">
   <p>Quantidade de contatos cadastrados: {{contatos.length}}</p>
 
@@ -161,30 +161,60 @@
 
           <a class="btn btn-social-icon  btn-twitter ">
             <Span class = "fa fa-twitter"> </ span>
-          </a>
+            </a>
 
-          <a class="btn btn-social-icon  btn-google ">
-            <Span class = "fa fa-google"> </ span>
-          </a>
+            <a class="btn btn-social-icon  btn-google ">
+              <Span class = "fa fa-google"> </ span>
+              </a>
 
-          <a class="btn btn-social-icon  btn-instagram ">
-            <Span class = "fa fa-instagram"> </ span>
-          </a>
+              <a class="btn btn-social-icon  btn-instagram ">
+                <Span class = "fa fa-instagram"> </ span>
+                </a>
 
-          </td>
-          <td>
-            <a ng-href="#/visualizar/{{contato._id}}">Visualizar</a>
-          </td>
-      </tr>
-    </tbody>
+              </td>
+              <td>
+                <a ng-href="#/visualizar/{{contato._id}}">Visualizar</a>
+              </td>
+            </tr>
+          </tbody>
 
-  </table>
-  <!-- END RESPONSIVE TABLE -->
+        </table>
+        <!-- END RESPONSIVE TABLE -->
 
-</div>
-</div>
+      </div>
+    </div>
 
-<!-- Original de formulario centralizado -->
+
+    <div class="row" ng-show="!filtro">
+      <div class="col-md-4">
+        <h2>Categorias</h2>
+        <p>Lista todas as principais categorias do site.</p>
+        <p><a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Cidades</h2>
+        <p>Lista os comercios mais procurados por cidade.</p>
+        <p><a href="http://www.tutorialrepublic.com/css-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Populares</h2>
+        <p>Lista os comercios mais procurados no site.</p>
+        <p><a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <footer>
+          <p>&copy; Copyright 2016 EncontredeTudo</p>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Original de formulario centralizado -->
 <!-- <div class="row">
   <div class="span12" style="text-align:center; margin: 0 auto;">
     <form class="form-horizontal" style="width: 400px; margin: 0 auto;" method="post" action="/form/">
