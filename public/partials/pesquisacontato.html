@@ -1,31 +1,54 @@
-<div class="container-fluid">
+<div class="container">
 
-  <!-- Header -->
   <div class="row">
-    <!-- <p>Header</p> -->
     <div class="col-sd-12">
       <img src="http://www.buscatudo.net/images/logo_buscatudo.jpg" alt="PegaTudo" class="img-responsive" style="margin: 0 auto;float: none;">
     </div>
   </div>
 
-  <!-- Conteudo -->
   <div class="row">
+    <div class="span12" style="text-align:center; margin: 0 auto;">
+      <form class="form-horizontal" style="margin: 0 auto;" method="post" action="/form/">
+        <!-- <fieldset> -->
+          <!-- <legend>Please login</legend> -->
+          <div class="control-group">
+            <!-- <label class="control-label" for="id_username">Username</label> -->
+            <div class="form-inline">
+            <div class="controls">
 
-    <form class="form-inline" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)">
-      <div class="col-md-offset-4">
-        <input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca" style="width: 50%;">
-        <button type="submit" class="btn btn-primary">Pesquisar</button>
-      </div>
+              <input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca" style="width: 400px;" />
+              <button type="submit" class="btn btn-primary">Pesquisar</button>
+
+            </div>
+            </div>
+          </div>
+        <!-- </fieldset> -->
       </form>
+    </div>
   </div>
-  Tabela Responsiva com resultados
-  <div class="row">
-
-  </div>
-
-  <!-- Footer -->
-  <div class="row">
-   <!--  <p>Footer</p> -->
- </div>
 
 </div>
+
+<!-- Original de formulario centralizado -->
+<!-- <div class="row">
+  <div class="span12" style="text-align:center; margin: 0 auto;">
+    <form class="form-horizontal" style="width: 400px; margin: 0 auto;" method="post" action="/form/">
+      <fieldset>
+        <legend>Please login</legend>
+        <div class="control-group">
+          <label class="control-label" for="id_username">Username</label>
+          <div class="controls">
+            <input name="username" maxlength="100" placeholder="Enter your username..." type="text" class="input-large" id="id_username" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="id_password">Password</label>
+          <div class="controls">
+            <input name="password" maxlength="100" placeholder="Enter your password..." type="password" class="input-large" id="id_password" />
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+ -->
