@@ -105,7 +105,12 @@
     </div>
     <div class="col-md-8">
       <div class="span12" style="text-align:center; margin: 0 auto;">
-        <form role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)" class="form-horizontal" style="margin: 0 auto;" method="post">
+
+        <form role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)" class="form-horizontal" style="margin: 0 auto;" >
+
+<!--         <form class="navbar-form navbar-left" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)">
+ -->
+
           <div class="control-group">
             <div class="controls">
               <input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca" />
@@ -122,271 +127,61 @@
   <br />
 
   <!-- RESPONSIVE TABLE -->
+<div ng-show="mensagem.texto" class="row">
+  <p>Quantidade de contatos cadastrados: {{contatos.length}}</p>
+
   <table class="table table-responsive">
 
     <thead>
       <tr>
         <th>#</th>
-        <th>Team</th>
-        <th>MP</th>
-        <th>W</th>
-        <th>D</th>
-        <th>L</th>
-        <th>F</th>
-        <th>A</th>
-        <th>D</th>
-        <th>P</th>
+        <th>Estabelecimento</th>
+        <th>Telefone</th>
+        <th>Site</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>Redes Sociais</th>
+        <th>Ações</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Cruzeiro</td>
-        <td>28</td>
-        <td>18</td>
-        <td>5</td>
-        <td>5</td>
-        <td>58</td>
-        <td>24</td>
-        <td>+34</td>
-        <td>59</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Botafogo</td>
-        <td>28</td>
-        <td>14</td>
-        <td>7</td>
-        <td>7</td>
-        <td>42</td>
-        <td>32</td>
-        <td>+10</td>
-        <td>49</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Grêmio</td>
-        <td>28</td>
-        <td>14</td>
-        <td>7</td>
-        <td>7</td>
-        <td>34</td>
-        <td>24</td>
-        <td>+10</td>
-        <td>49</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Atlético PR</td>
-        <td>28</td>
-        <td>13</td>
-        <td>9</td>
-        <td>6</td>
-        <td>46</td>
-        <td>35</td>
-        <td>+11</td>
-        <td>48</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Atlético Mineiro</td>
-        <td>28</td>
-        <td>11</td>
-        <td>9</td>
-        <td>8</td>
-        <td>33</td>
-        <td>28</td>
-        <td>+5</td>
-        <td>42</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Vitória</td>
-        <td>28</td>
-        <td>11</td>
-        <td>7</td>
-        <td>10</td>
-        <td>40</td>
-        <td>41</td>
-        <td>-1</td>
-        <td>40</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>Internacional</td>
-        <td>28</td>
-        <td>10</td>
-        <td>10</td>
-        <td>8</td>
-        <td>43</td>
-        <td>40</td>
-        <td>+3</td>
-        <td>40</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>Goiás</td>
-        <td>28</td>
-        <td>10</td>
-        <td>10</td>
-        <td>8</td>
-        <td>33</td>
-        <td>34</td>
-        <td>-1</td>
-        <td>40</td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>Santos</td>
-        <td>28</td>
-        <td>10</td>
-        <td>9</td>
-        <td>9</td>
-        <td>34</td>
-        <td>30</td>
-        <td>+4</td>
-        <td>39</td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>Flamengo</td>
-        <td>28</td>
-        <td>9</td>
-        <td>10</td>
-        <td>9</td>
-        <td>34</td>
-        <td>34</td>
-        <td>+0</td>
-        <td>37</td>
-      </tr>
-      <tr>
-        <td>11</td>
-        <td>Corinthians</td>
-        <td>28</td>
-        <td>8</td>
-        <td>13</td>
-        <td>7</td>
-        <td>22</td>
-        <td>17</td>
-        <td>+5</td>
-        <td>37</td>
-      </tr>
-      <tr>
-        <td>12</td>
-        <td>Bahia</td>
-        <td>28</td>
-        <td>9</td>
-        <td>9</td>
-        <td>10</td>
-        <td>30</td>
-        <td>35</td>
-        <td>-5</td>
-        <td>36</td>
-      </tr>
-      <tr>
-        <td>13</td>
-        <td>Fluminense</td>
-        <td>28</td>
-        <td>9</td>
-        <td>8</td>
-        <td>11</td>
-        <td>32</td>
-        <td>35</td>
-        <td>-3</td>
-        <td>35</td>
-      </tr>
-      <tr>
-        <td>14</td>
-        <td>Portuguesa</td>
-        <td>28</td>
-        <td>9</td>
-        <td>7</td>
-        <td>12</td>
-        <td>41</td>
-        <td>41</td>
-        <td>+0</td>
-        <td>34</td>
-      </tr>
-      <tr>
-        <td>15</td>
-        <td>São Paulo</td>
-        <td>28</td>
-        <td>9</td>
-        <td>7</td>
-        <td>12</td>
-        <td>26</td>
-        <td>29</td>
-        <td>-3</td>
-        <td>34 </td>
-      </tr>
-      <tr>
-        <td>16</td>
-        <td>Coritiba</td>
-        <td>28</td>
-        <td>8</td>
-        <td>10</td>
-        <td>10</td>
-        <td>31</td>
-        <td>37</td>
-        <td>-6</td>
-        <td>34</td>
-      </tr>
-      <tr>
-        <td>17</td>
-        <td>Criciúma</td>
-        <td>28</td>
-        <td>9</td>
-        <td>5</td>
-        <td>14</td>
-        <td>37</td>
-        <td>47</td>
-        <td>-10</td>
-        <td>32</td>
-      </tr>
-      <tr>
-        <td>18</td>
-        <td>Vasco da Gama</td>
-        <td>28</td>
-        <td>8</td>
-        <td>8</td>
-        <td>12</td>
-        <td>38</td>
-        <td>45</td>
-        <td>-7</td>
-        <td>33</td>
-      </tr>
-      <tr>
-        <td>19</td>
-        <td>Ponte Preta</td>
-        <td>28</td>
-        <td>7</td>
-        <td>5</td>
-        <td>16</td>
-        <td>29</td>
-        <td>42</td>
-        <td>-13</td>
-        <td>26</td>
-      </tr>
-      <tr>
-        <td>20</td>
-        <td>Náutico</td>
-        <td>28</td>
-        <td>4</td>
-        <td>5</td>
-        <td>19</td>
-        <td>19</td>
-        <td>52</td>
-        <td>-33</td>
-        <td>17</td>
-      </tr>
+      <tr ng-repeat="contato in contatos">
+        <td>{{$index}}</td>
+        <td>{{contato.nome}}</td>
+        <td>{{contato.telefone}}</td>
+        <td><a href="{{contato.site}}" target="_blank">Acesse o site</a></td>
+        <td>{{contato.cidade}}</td>
+        <td>{{contato.estado}}</td>
+        <td>
 
+          <a class="btn btn-social-icon btn-facebook">
+            <span class="fa fa-facebook"></span>
+          </a>
+
+          <a class="btn btn-social-icon  btn-twitter ">
+            <Span class = "fa fa-twitter"> </ span>
+          </a>
+
+          <a class="btn btn-social-icon  btn-google ">
+            <Span class = "fa fa-google"> </ span>
+          </a>
+
+          <a class="btn btn-social-icon  btn-instagram ">
+            <Span class = "fa fa-instagram"> </ span>
+          </a>
+
+          </td>
+          <td>
+            <a ng-href="#/visualizar/{{contato._id}}">Visualizar</a>
+          </td>
+      </tr>
     </tbody>
 
   </table>
   <!-- END RESPONSIVE TABLE -->
 
-
+</div>
 </div>
 
 <!-- Original de formulario centralizado -->
