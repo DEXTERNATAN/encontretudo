@@ -107,10 +107,6 @@
       <div class="span12" style="text-align:center; margin: 0 auto;">
 
         <form role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)" class="form-horizontal" style="margin: 0 auto;" >
-
-<!--         <form class="navbar-form navbar-left" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)">
--->
-
 <div class="control-group">
   <div class="controls">
     <input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca" />
@@ -126,11 +122,17 @@
 </div>
 <br />
 
+
+<div id="signupalert" style="display:block; text-align: center;" class="alert alert-danger"  ng-if="!contatos.mensagem" class="animate-if" ng-show="!contatos.length">
+  <!-- <p>Sucesso:</p> -->
+  <span class="center">Nenhum registro localizado com os dados informados!!!</span>
+</div>
+
 <!-- RESPONSIVE TABLE -->
 <div ng-show="mensagem.texto" class="row">
-  <p>Quantidade de contatos cadastrados: {{contatos.length}}</p>
+  <p ng-show="contatos.length">Quantidade de contatos cadastrados: {{contatos.length}}</p>
 
-  <table class="table table-responsive">
+  <table class="table table-responsive" ng-show="contatos.length">
 
     <thead>
       <tr>
@@ -180,60 +182,5 @@
 
         </table>
         <!-- END RESPONSIVE TABLE -->
-
       </div>
     </div>
-
-
-    <div class="row" ng-show="!filtro">
-      <div class="col-md-4">
-        <h2>Categorias</h2>
-        <p>Lista todas as principais categorias do site.</p>
-        <p><a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Cidades</h2>
-        <p>Lista os comercios mais procurados por cidade.</p>
-        <p><a href="http://www.tutorialrepublic.com/css-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Populares</h2>
-        <p>Lista os comercios mais procurados no site.</p>
-        <p><a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" class="btn btn-success">Visualizar &raquo;</a></p>
-      </div>
-    </div>
-
-    <hr>
-    <div class="row">
-      <div class="col-xs-12">
-        <footer>
-          <p>&copy; Copyright 2016 EncontredeTudo</p>
-        </footer>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Original de formulario centralizado -->
-<!-- <div class="row">
-  <div class="span12" style="text-align:center; margin: 0 auto;">
-    <form class="form-horizontal" style="width: 400px; margin: 0 auto;" method="post" action="/form/">
-      <fieldset>
-        <legend>Please login</legend>
-        <div class="control-group">
-          <label class="control-label" for="id_username">Username</label>
-          <div class="controls">
-            <input name="username" maxlength="100" placeholder="Enter your username..." type="text" class="input-large" id="id_username" />
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="id_password">Password</label>
-          <div class="controls">
-            <input name="password" maxlength="100" placeholder="Enter your password..." type="password" class="input-large" id="id_password" />
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
-</div>
- -->
