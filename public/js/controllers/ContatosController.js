@@ -43,8 +43,61 @@ angular.module('contatooh').controller('ContatosController',
 
 
 		$scope.ImportarContato = function() {
-			
-			$http.get('https://api.import.io/store/connector/eef2879d-be57-4ddc-8779-b99a0c540aa9/_query?input=webpage/url:http%3A%2F%2Fguia.radardf.com%2F&&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e').success(function(data){
+
+
+						// Busca dados do guia.radardf
+						$http.get('https://api.import.io/store/connector/d12977f2-2748-4afe-ae57-edf4f7e49de2/_query?&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e').success(function(data){
+
+							// Pegando os dados que estão vindo da api
+							$scope.filtro = data.results;
+
+							// Imprimindo para simples conferencia
+							console.log(data.results.length + $scope.filtro);
+
+							// Percorrendo os dados que foram enviados
+							for(i=0; i<data.results.length; i++){
+
+								var jsonContato = {
+									"nome": data.results[i]["venuename_link/_text"],
+									"categoria": "Alimentação",
+									"observacao": data.results[i]["detail_content"]
+									/*,
+									"email": "natansl"+i+"@gmail.com",
+									"site": data.results[i]["venuename_link"],
+									"telefone": "9999-9999",
+									"estado": data.results[i]["venueaddress_value"],
+									"cidade": data.results[i]["venueaddress_value"],
+									"endereco": data.results[i]["venueaddress_value"]*/
+								};
+								console.log('Array do site: ' + data.results[i]);
+								//console.log("object: %o", jsonContato)
+								$scope.empresas.push(jsonContato);
+
+							}
+							//console.log("object: %o", jsonContato)
+							console.log("object do array: %o", $scope.empresas)
+							
+
+							/*$http.post("/importacontato", { query: $scope.empresas }).success(function (data) {
+								$scope.mensagem = { texto: "Importação ocorreu com sucesso " + data};
+							}).error(function (data) {
+								$scope.mensagem = { "texto: ": "Erro na importação" };
+							});
+*/
+						}).error(function (data) { 
+							console.log('error0');
+						});
+
+
+
+
+
+
+
+
+
+			// Busca dados do guia.radardf
+/*			$http.get('https://api.import.io/store/connector/eef2879d-be57-4ddc-8779-b99a0c540aa9/_query?input=webpage/url:http%3A%2F%2Fguia.radardf.com%2F&&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e').success(function(data){
 
 							// Pegando os dados que estão vindo da api
 							$scope.filtro = data.results;
@@ -84,30 +137,35 @@ angular.module('contatooh').controller('ContatosController',
 						}).error(function (data) { 
 							console.log('error0');
 						});
+						*/
 
-		}
+
+
+
+
+					}
 
 		// Nova função para buscar os usuarios na tela inicial do sistema
 		$scope.PesquisarContato = function(form) {
 			
 			var data = form.pBusca.$modelValue;			
 			$http.post("/busca", { query: data}).success(function (data) {
-                
-                if (!data.length)
-                	$scope.mensagem = {
+
+				if (!data.length)
+					$scope.mensagem = {
 						texto: "error"
 					};
 
-				if (data.length)
-					$scope.mensagem = {
-						texto: data
-					};
-					$scope.contatos = data;
-					
-            })
-            .error(function (data) {
-                $scope.mensagem = { "texto: ": data.mensagem };
-            });
-            
-        };
-    });
+					if (data.length)
+						$scope.mensagem = {
+							texto: data
+						};
+						$scope.contatos = data;
+
+					})
+			.error(function (data) {
+				$scope.mensagem = { "texto: ": data.mensagem };
+			});
+
+		};
+	});

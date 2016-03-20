@@ -44,7 +44,7 @@
 
 
 /* Small Sizes */
-@media (max-width: 767px) {
+@media (max-width: 767px) { 
 
   /* Responsive Table */
   .table-responsive {
@@ -81,7 +81,7 @@
     display: inline-block;
   }
 
-
+  
   .table td:last-child {
    border-right: #999999 solid 1px;
  }
@@ -107,6 +107,10 @@
       <div class="span12" style="text-align:center; margin: 0 auto;">
 
         <form role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)" class="form-horizontal" style="margin: 0 auto;" >
+
+<!--         <form class="navbar-form navbar-left" role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)">
+-->  
+
 <div class="control-group">
   <div class="controls">
     <input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca" />
@@ -134,26 +138,26 @@
 
   <table class="table table-responsive" ng-show="contatos.length">
 
-    <thead>
+    <thead> 
       <tr>
         <th>#</th>
         <th>Estabelecimento</th>
-        <th>Telefone</th>
-        <th>Site</th>
-        <th>Cidade</th>
-        <th>Estado</th>
-        <th>Redes Sociais</th>
-        <th>Ações</th>
+        <th>Telefone</th> 
+        <th>Site</th>  
+        <th>Cidade</th>  
+        <th>Estado</th>  
+        <th>Redes Sociais</th>  
+        <th>Ações</th>  
       </tr>
     </thead>
 
-    <tbody>
+    <tbody> 
       <tr ng-repeat="contato in contatos">
-        <td>{{$index}}</td>
+        <td>{{$index}}</td>  
         <td>{{contato.nome}}</td>
-        <td>{{contato.telefone}}</td>
-        <td><a href="{{contato.site}}" target="_blank">Acesse o site</a></td>
-        <td>{{contato.cidade}}</td>
+        <td>{{contato.telefone}}</td> 
+        <td><a href="{{contato.site}}" target="_blank">Acesse o site</a></td> 
+        <td>{{contato.cidade}}</td>  
         <td>{{contato.estado}}</td>
         <td>
 
@@ -176,11 +180,36 @@
               </td>
               <td>
                 <a ng-href="#/visualizar/{{contato._id}}">Visualizar</a>
-              </td>
+              </td>  
             </tr>
           </tbody>
 
         </table>
         <!-- END RESPONSIVE TABLE -->
+
       </div>
     </div>
+
+    <!-- Original de formulario centralizado -->
+<!-- <div class="row">
+  <div class="span12" style="text-align:center; margin: 0 auto;">
+    <form class="form-horizontal" style="width: 400px; margin: 0 auto;" method="post" action="/form/">
+      <fieldset>
+        <legend>Please login</legend>
+        <div class="control-group">
+          <label class="control-label" for="id_username">Username</label>
+          <div class="controls">
+            <input name="username" maxlength="100" placeholder="Enter your username..." type="text" class="input-large" id="id_username" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="id_password">Password</label>
+          <div class="controls">
+            <input name="password" maxlength="100" placeholder="Enter your password..." type="password" class="input-large" id="id_password" />
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+ -->

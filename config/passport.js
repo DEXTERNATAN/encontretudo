@@ -18,19 +18,18 @@ module.exports = function() {
 	// Strategy Facebook
 	passport.use(new FacebookStrategy({
 
-			clientID: '1746405232313239',
-			clientSecret: '0e744d907a577fcaac97ecd497a28941',
-			callbackURL: "http://localhost:3000/auth/facebook/callback"
+		clientID: '494271020779702',
+		clientSecret: '5f385705149d4c3f3c85a0b65cde9999',
+		callbackURL: "http://secure-bayou-39973.herokuapp.com/#/"
 
-		},
-		function(accessToken, refreshToken, profile, cb) {
-
-			/*User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-				return cb(err, user);
-			});*/
-			console.log("Acesso ok");
-		}
-	));
+	},
+	function(accessToken, refreshToken, profile, cb) {
+		
+		User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+			return cb(err, user);
+		});
+	}
+	));	
 
 
 	/* GITHUB */
@@ -41,7 +40,7 @@ module.exports = function() {
 		clientID: 'b360479ac66dee498617',
 		clientSecret: '478dedcba8079a4f85dab99c8d24f77ff36ca045',
 		callbackURL: 'http://localhost:3000/auth/github/callback'
-
+		
 
 		// SERVIDOR HEROKU
 		/*clientID: '4e894100d7b987c05124',
@@ -52,18 +51,18 @@ module.exports = function() {
 
 		Usuario.findOrCreate(
 
-			{
-				"login": profile.username
-			}, {
-				"nome": profile.username
-			},
-			function(erro, usuario) {
-				if (erro) {
-					console.log(erro);
-					return done(erro);
-				}
-				return done(null, usuario);
+		{
+			"login": profile.username
+		}, {
+			"nome": profile.username
+		},
+		function(erro, usuario) {
+			if (erro) {
+				console.log(erro);
+				return done(erro);
 			}
+			return done(null, usuario);
+		}
 		);
 
 	}));
@@ -74,18 +73,18 @@ module.exports = function() {
 		autenticação. Realizará a serialização apenas do
 		ObjectId do usuário na sessão.
 		*/
-	passport.serializeUser(function(usuario, done) {
-		done(null, usuario._id);
-	});
+		passport.serializeUser(function(usuario, done) {
+			done(null, usuario._id);
+		});
 
 
 	// Recebe o ObjectId do usuário armazenado na sessão
 	// Chamado a CADA requisição
 	passport.deserializeUser(function(id, done) {
 		Usuario.findById(id).exec()
-			.then(function(usuario) {
-				done(null, usuario);
-			});
+		.then(function(usuario) {
+			done(null, usuario);
+		});
 	});
 
 };
