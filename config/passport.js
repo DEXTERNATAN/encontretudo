@@ -20,7 +20,7 @@ module.exports = function() {
 
 			clientID: '517844815061650',
 			clientSecret: 'f88433e17dbf36f0907f1ee5e9079286',
-			callbackURL: "https://secure-bayou-39973.herokuapp.com/#/auth/facebook/callback"
+			callbackURL: "https://secure-bayou-39973.herokuapp.com/auth/facebook/callback"
 
 		},
 		function(accessToken, refreshToken, profile, cb) {
