@@ -39,15 +39,15 @@ module.exports = function() {
 	passport.use(new GitHubStrategy({
 
 		// MAQUINA LOCAL
-		clientID: 'b360479ac66dee498617',
+		/*clientID: 'b360479ac66dee498617',
 		clientSecret: '478dedcba8079a4f85dab99c8d24f77ff36ca045',
-		callbackURL: 'http://localhost:3000/auth/github/callback'
+		callbackURL: 'http://localhost:3000/auth/github/callback'*/
 
 
 		// SERVIDOR HEROKU
-		/*clientID: '4e894100d7b987c05124',
+		clientID: '4e894100d7b987c05124',
 		clientSecret: '667d4e6fbfa647b57b1d62f643ab2acd0ad6ce45',
-		callbackURL: 'https://secure-bayou-39973.herokuapp.com/auth/github/callback'*/
+		callbackURL: 'https://secure-bayou-39973.herokuapp.com/auth/github/callback'
 
 	}, function(accessToken, refreshToken, profile, done) {
 
