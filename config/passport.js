@@ -18,8 +18,8 @@ module.exports = function() {
 	// Strategy Facebook
 	passport.use(new FacebookStrategy({
 
-			clientID: '494271020779702',
-			clientSecret: '5f385705149d4c3f3c85a0b65cde9999',
+			clientID: '517844815061650',
+			clientSecret: 'f88433e17dbf36f0907f1ee5e9079286',
 			callbackURL: "http://localhost:3000/auth/facebook/callback"
 
 		},
