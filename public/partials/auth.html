@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 	<a href="/auth/github">
 		<h1 id="entrar" class="text-center">Entre pelo GitHub</h1>
 	</a>
@@ -8,15 +8,14 @@
 	<a href="/auth/facebook">
 		<h1 id="entrar" class="text-center">Entre pelo Facebook</h1>
 	</a>
+</div> -->
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<a class="btn btn-block btn-social btn-facebook" onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-facebook']);" href="/auth/github">
+				<span class="fa fa-facebook"></span> Sign in with Facebook
+			</a>
+		</div>
+	</div>
 </div>
-
-<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5&appId=200380730332919";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
