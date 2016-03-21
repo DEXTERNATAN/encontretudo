@@ -1,78 +1,91 @@
 <!-- <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
- -->
+-->
 <div id="signupbox" style="display:block; margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <div class="panel-title">Criar Login</div>
-                        </div>  
-                        <div class="panel-body" >
-                            <form id="signupform" class="form-horizontal" role="form">
-                                
-                                <div id="signupalert" style="display:none" class="alert alert-danger">
-                                    <p>Erro:</p>
-                                    <span></span>
-                                </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="panel-title">Criar Login</div>
+        </div>
+        <div class="panel-body" >
+            <form id="frmCadUsuario" name="frmCadUsuario" class="form-horizontal" role="form" ng-submit="cadastraUsuario(frmCadUsuario)">
+
+                <div id="signupalert" style="display:block;" class="alert alert-success" ng-show="mensagem.texto">
+                    <!-- <p>Sucesso:</p> -->
+                    <span>{{mensagem.texto}}</span>
+                </div>
+                <!-- <div ng-show="mensagem.texto" id="login-alert" class="alert alert-success col-sm-12">
+                    {{mensagem.texto}}
+                </div>
+            -->
                                  <!-- <div class="form-group">
                                     <label for="suscard" class="col-md-3 control-label">Nº Cartão do SUS</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="lastname" placeholder="">
                                     </div>
-                                </div> -->                                  
+                                </div> -->
                                 <div class="form-group">
-                                    <label for="firstname" class="col-md-3 control-label">Nome</label>
+                                    <label for="nome" class="col-md-3 control-label">Nome</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="firstname" placeholder="Como consta no seu CPF">
+                                        <input type="text" class="form-control" name="nome" placeholder="Informe seu login" ng-model="usuario.nome" tabindex="1">
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="login" class="col-md-3 control-label">Login</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="login" placeholder="Informe seu login" ng-model="usuario.login" tabindex="2">
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group">
                                     <label for="lastname" class="col-md-3 control-label">CPF</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="lastname" placeholder="Apenas números, ex: 00011122233">
+                                        <input type="text" class="form-control" name="lastname" placeholder="Apenas números, ex: 00011122233" ng-model="usuario.">
                                     </div>
-                                </div>
-                                <div class="form-group">
+                                </div> -->
+                                <!-- <div class="form-group">
                                     <label for="endereco" class="col-md-3 control-label">Endereço</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="endereco" placeholder="Ex: Rua, Nº, Bairro, Cidade, Estado">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">E-mail</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="email" placeholder="exemplo@gmail.com">
+                                        <input type="text" class="form-control" name="email" placeholder="exemplo@gmail.com" ng-model="usuario.email" tabindex="3">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="col-md-3 control-label">Senha</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="passwd" placeholder="">
+                                        <input type="password" class="form-control" name="password" placeholder="" ng-model="usuario.password" tabindex="4">
                                     </div>
                                 </div>
-                                <div class="form-group">
+<!--                                 <div class="form-group">
                                     <label for="password" class="col-md-3 control-label">Repita a Senha</label>
                                     <div class="col-md-9">
                                         <input type="password" class="form-control" name="passwd2" placeholder="">
                                     </div>
-                                </div>
- 
+                                </div> -->
+
                                 <div class="form-group">
-                                    <!-- Button -->                                        
+                                    <!-- Button -->
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> Cadastrar</button>
+                                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> Cadastrar</button>
                                     </div>
                                 </div>
-                                
+
                                 <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
-                                    
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Cadastre-se com o Facebook</button>
+
+                                    <div class="col-md-offset-3 col-md-6">
+                                        <!-- <button id="btn-fbsignup" type="button" class="btn btn-primary">
+                                        <i class="icon-facebook"></i>Cadastre-se com o Facebook</button> -->
+                                        <a class="btn btn-block btn-social btn-facebook" onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-facebook']); " href="/auth/facebook">
+                                            <span class="fa fa-facebook"></span> Logar com Facebook</a>
+                                        </div>
+
+                                        <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/#/login" onclick="$('#signupbox').hide(); $('#loginbox').show()">Voltar à tela de Login <<<</a></div>
                                     </div>
-                                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/#/" onclick="$('#signupbox').hide(); $('#loginbox').show()">Voltar à tela de Login <<<</a></div>                                           
-                                        
-                                </div>         
-                            </form>
-                         </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-         </div> 
-    </div>
+                </div>
