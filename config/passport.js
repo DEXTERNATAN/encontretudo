@@ -47,7 +47,7 @@ module.exports = function() {
 		// SERVIDOR HEROKU
 		clientID: '4e894100d7b987c05124',
 		clientSecret: '667d4e6fbfa647b57b1d62f643ab2acd0ad6ce45',
-		callbackURL: 'https://secure-bayou-39973.herokuapp.com/auth/github/callback'
+		callbackURL: 'http://secure-bayou-39973.herokuapp.com/#/auth'
 
 	}, function(accessToken, refreshToken, profile, done) {
 
