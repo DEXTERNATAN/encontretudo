@@ -24,6 +24,12 @@ module.exports = function() {
 
 		},
 		function(accessToken, refreshToken, profile, cb) {
+			console.log('Profile');
+			console.log(profile);
+			console.log('CB ---------------------------');
+			console.log(cb);
+
+
 			// Criando um novo usuario quando ele não existe
 			Usuario.findOrCreate(
 
