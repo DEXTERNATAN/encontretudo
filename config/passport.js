@@ -24,14 +24,9 @@ module.exports = function() {
 
 		},
 		function(accessToken, refreshToken, profile, cb) {
-
-			/*User.findOrCreate({ facebookId: profile.id }, function (err, usuario) {
-				return cb(err, usuario);
-			});
-			console.log('xxxxxxxxxxxxxxxxxxxxxxxxxXXXXXXXXXXXXXXXXXXXXX');*/
 			console.log('Profile');
 			console.log(profile);
-
+			// Criando um novo usuario quando ele não existe
 			Usuario.findOrCreate(
 
 				{
@@ -55,6 +50,11 @@ module.exports = function() {
 	/* GITHUB */
 	// Strategy GitHub
 	passport.use(new GitHubStrategy({
+
+		// MAQUINA LOCAL
+		/*clientID: 'b360479ac66dee498617',
+		clientSecret: '478dedcba8079a4f85dab99c8d24f77ff36ca045',
+		callbackURL: 'http://localhost:3000/auth/github/callback'*/
 
 
 		// SERVIDOR HEROKU
