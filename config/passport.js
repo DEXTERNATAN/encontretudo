@@ -28,15 +28,16 @@ module.exports = function() {
 			/*User.findOrCreate({ facebookId: profile.id }, function (err, usuario) {
 				return cb(err, usuario);
 			});
-			console.log('xxxxxxxxxxxxxxxxxxxxxxxxxXXXXXXXXXXXXXXXXXXXXX');*/
+			*/
 
+			console.log('profile: ' + profile);
 
 			Usuario.findOrCreate(
 
 				{
-					"login": profile.id
+					"login": profile.username
 				}, {
-					"nome": profile.id
+					"nome": profile.username
 				},
 				function(erro, usuario) {
 					if (erro) {
@@ -44,9 +45,8 @@ module.exports = function() {
 						return done(erro);
 					}
 					return cb(erro, usuario);
+
 				});
-
-
 
 		}));
 
