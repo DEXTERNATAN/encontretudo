@@ -2,9 +2,9 @@ var passport = require('passport');
 
 // Logando com gitHub
 var GitHubStrategy = require('passport-github').Strategy;
+
 //Logando com Facebook
 var FacebookStrategy = require('passport-facebook');
-
 
 // Fazendo o passport conhecer o model
 var mongoose = require('mongoose');
