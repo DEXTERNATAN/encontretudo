@@ -29,7 +29,8 @@ module.exports = function() {
 				return cb(err, usuario);
 			});
 			console.log('xxxxxxxxxxxxxxxxxxxxxxxxxXXXXXXXXXXXXXXXXXXXXX');*/
-
+			console.log('Profile');
+			console.log(profile);
 
 			Usuario.findOrCreate(
 
