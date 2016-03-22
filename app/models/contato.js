@@ -11,7 +11,7 @@ module.exports = function() {
 		},
 		endereco: {
 			type: String,
-			required: true
+			required: false
 		},
 		telefone: {
 			type: String,
@@ -19,10 +19,11 @@ module.exports = function() {
 		},
 		email: {
 			type: String,
-			required: true,
-			index: {
+			required: true
+			//,
+			/*index: {
 				unique: true
-			}
+			}*/
 		},
 		observacao: {
 			type: String

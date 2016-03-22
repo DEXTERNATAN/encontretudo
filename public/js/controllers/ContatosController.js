@@ -1,42 +1,36 @@
-angular.module('contatooh').controller('ContatosController',
-	function(Contato, $scope, $resource, $http) {
+angular.module('contatooh').controller('ContatosController', 
+	function(Contato, $scope, $resource, $http){
 
 		$scope.contatos = [];
-		$scope.empresas = [];
+		$scope.empresas = [];		
 		$scope.filtro = '';
-		$scope.mensagem = {
-			texto: ''
-		};
-
+		$scope.mensagem = {texto: ''};
+		
 		function buscaContatos() {
 			Contato.query(
-				function(contatos) {
-
+				function(contatos){
+					
 					$scope.contatos = contatos;
 					$scope.mensagem = {};
 				},
-				function(erro) {
+				function(erro){
 					console.log(erro);
 					$scope.mensagem = {
 						texto: 'Não foi possível obter a lista'
 					};
 				}
-			);
+				);	
 		}
 
-		$scope.remove = function(contato) {
-			Contato.delete({
-				id: contato._id
-			});
+		$scope.remove = function(contato){
+			Contato.delete({id: contato._id});
 		}
 
 		// Função para carregar contatos na inicialização do projeto.
 		buscaContatos();
 
 		$scope.remove = function(contato) {
-			Contato.delete({
-					id: contato._id
-				},
+			Contato.delete({id: contato._id},
 				buscaContatos,
 				function(erro) {
 					$scope.mensagem = {
@@ -44,142 +38,138 @@ angular.module('contatooh').controller('ContatosController',
 					};
 					console.log(erro);
 				}
-			);
+				);
 		};
 
 
 		$scope.ImportarContato = function() {
 
 
-			// Busca dados do Foursquare
+						// Busca dados do Foursquare
+						
+						// Carregando as cafeterias do gama
+						//$http.get('https://api.import.io/store/connector/2c9832c8-2b5a-4b33-b4bb-06781e0a028b/_query?input=webpage/url:https%3A%2F%2Fpt.foursquare.com%2Fexplore%3Fmode%3Durl%26near%3DGama%252C%2520DF%252C%2520Brasil%26nearGeoId%3D72057594041390608%26q%3DCaf%25C3%25A9&&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e').success(function(data){
 
-			// Carregando as cafeterias do gama
-			//$http.get('https://api.import.io/store/connector/2c9832c8-2b5a-4b33-b4bb-06781e0a028b/_query?input=webpage/url:https%3A%2F%2Fpt.foursquare.com%2Fexplore%3Fmode%3Durl%26near%3DGama%252C%2520DF%252C%2520Brasil%26nearGeoId%3D72057594041390608%26q%3DCaf%25C3%25A9&&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e').success(function(data){
+						// Carregando a categoria de alimentação	
+						$http.get('https://api.import.io/store/connector/203fa8de-aebe-46e2-bca2-f4bff1dd3df1/_query?input=webpage/url:https%3A%2F%2Fpt.foursquare.com%2Fexplore%3Fmode%3Durl%26near%3DGama%252C%2520DF%252C%2520Brasil%26nearGeoId%3D72057594041390608%26q%3DAlimenta%25C3%25A7%25C3%25A3o&&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e').success(function(data){
 
-			// Carregando a categoria de alimentação
-			$http.get(
-				'https://api.import.io/store/connector/203fa8de-aebe-46e2-bca2-f4bff1dd3df1/_query?input=webpage/url:https%3A%2F%2Fpt.foursquare.com%2Fexplore%3Fmode%3Durl%26near%3DGama%252C%2520DF%252C%2520Brasil%26nearGeoId%3D72057594041390608%26q%3DAlimenta%25C3%25A7%25C3%25A3o&&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e'
-			).success(function(data) {
+							// Pegando os dados que estão vindo da api
+							$scope.filtro = data.results;
 
-				// Pegando os dados que estão vindo da api
-				$scope.filtro = data.results;
+							// Imprimindo para simples conferencia
+							console.log(data.results.length + $scope.filtro);
 
-				// Imprimindo para simples conferencia
-				console.log(data.results.length + $scope.filtro);
+							// Percorrendo os dados que foram enviados
+							for(i=0; i<data.results.length; i++){
 
-				// Percorrendo os dados que foram enviados
-				for (i = 0; i < data.results.length; i++) {
+								var jsonContato = {
+									"nome": data.results[i]["venuename_link/_text"],
+									"categoria": "Alimentação",
+									"observacao": data.results[i]["detail_content"],
+									"email": "alimentação"+i+"@gmail.com",
+									"site": data.results[i]["venuename_link"],
+									"telefone": "9999-9999",
+									"estado": data.results[i]["venueaddress_value"],
+									"cidade": data.results[i]["venueaddress_value"],
+									"endereco": data.results[i]["venueaddress_value"]
+								};
+								console.log('Array do site: ' + data.results[i]);
+								//console.log("object: %o", jsonContato)
+								$scope.empresas.push(jsonContato);
 
-					var jsonContato = {
-						"nome": data.results[i]["venuename_link/_text"],
-						"categoria": "Alimentação",
-						"observacao": data.results[i]["detail_content"],
-						"email": "alimentação" + i + "@gmail.com",
-						"site": data.results[i]["venuename_link"],
-						"telefone": "9999-9999",
-						"estado": data.results[i]["venueaddress_value"],
-						"cidade": data.results[i]["venueaddress_value"],
-						"endereco": data.results[i]["venueaddress_value"]
-					};
-					console.log('Array do site: ' + data.results[i]);
-					//console.log("object: %o", jsonContato)
-					$scope.empresas.push(jsonContato);
+							}
+							//console.log("object: %o", jsonContato)
+							console.log("object do array: %o", $scope.empresas)
+							
 
-				}
-				//console.log("object: %o", jsonContato)
-				console.log("object do array: %o", $scope.empresas)
+							$http.post("/importacontato", { query: $scope.empresas }).success(function (data) {
+								$scope.mensagem = { texto: "Importação ocorreu com sucesso " + data};
+							}).error(function (data) {
+								$scope.mensagem = { "texto: ": "Erro na importação" };
+							});
+
+						}).error(function (data) { 
+							console.log('error0');
+						});
 
 
-				$http.post("/importacontato", {
-					query: $scope.empresas
-				}).success(function(data) {
-					$scope.mensagem = {
-						texto: "Importação ocorreu com sucesso " + data
-					};
-				}).error(function(data) {
-					$scope.mensagem = {
-						"texto: ": "Erro na importação"
-					};
-				});
 
-			}).error(function(data) {
-				console.log('error0');
-			});
+
+
+
 
 
 
 			// Busca dados do guia.radardf
-			/*			$http.get('https://api.import.io/store/connector/eef2879d-be57-4ddc-8779-b99a0c540aa9/_query?input=webpage/url:http%3A%2F%2Fguia.radardf.com%2F&&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e').success(function(data){
+/*			$http.get('https://api.import.io/store/connector/eef2879d-be57-4ddc-8779-b99a0c540aa9/_query?input=webpage/url:http%3A%2F%2Fguia.radardf.com%2F&&_apikey=8aaa9517a7b04e9799197d959078da53e56dc10400c2a515d765bf108d62e0913aafb9acbbd37ff0ad1f05de84652c334b00d52653ad5cb7faf9d23f2c974aa9b57336807566058c2796fb768ff4132e').success(function(data){
 
-										// Pegando os dados que estão vindo da api
-										$scope.filtro = data.results;
+							// Pegando os dados que estão vindo da api
+							$scope.filtro = data.results;
 
-										// Imprimindo para simples conferencia
-										console.log(data.results.length + $scope.filtro);
+							// Imprimindo para simples conferencia
+							console.log(data.results.length + $scope.filtro);
 
-										// Percorrendo os dados que foram enviados
-										for(i=0; i<data.results.length; i++){
+							// Percorrendo os dados que foram enviados
+							for(i=0; i<data.results.length; i++){
 
-											var jsonContato = {
-												"nome":data.results[i]["entrytitle_link/_text"],
-												"categoria":data.results[i]["listingcat_links/_text"],
-												"observacao":data.results[i]["descrio_description"],
-												"email":data.results[i]["lermais_link"],
-												"site":data.results[i]["entrytitle_link"],
-												"telefone":data.results[i]["listingphone_value"],
-												"estado":data.results[i]["listing_value"],
-												"cidade":data.results[i]["listing_value"],
-												"endereco":data.results[i]["listing_value"]
-											};
-											console.log('Array do site: ' + data.results[i]);
-											//console.log("object: %o", jsonContato)
-											$scope.empresas.push(jsonContato);
+								var jsonContato = {
+									"nome":data.results[i]["entrytitle_link/_text"],
+									"categoria":data.results[i]["listingcat_links/_text"],
+									"observacao":data.results[i]["descrio_description"],
+									"email":data.results[i]["lermais_link"],
+									"site":data.results[i]["entrytitle_link"],
+									"telefone":data.results[i]["listingphone_value"],
+									"estado":data.results[i]["listing_value"],
+									"cidade":data.results[i]["listing_value"],
+									"endereco":data.results[i]["listing_value"]
+								};
+								console.log('Array do site: ' + data.results[i]);
+								//console.log("object: %o", jsonContato)
+								$scope.empresas.push(jsonContato);
 
-										}
-										//console.log("object: %o", jsonContato)
-										console.log("object do array: %o", $scope.empresas)
+							}
+							//console.log("object: %o", jsonContato)
+							console.log("object do array: %o", $scope.empresas)
+							
+
+							$http.post("/importacontato", { query: $scope.empresas }).success(function (data) {
+								$scope.mensagem = { texto: "Importação ocorreu com sucesso " };
+							}).error(function (data) {
+								$scope.mensagem = { "texto: ": "Erro na importação" };
+							});
+
+						}).error(function (data) { 
+							console.log('error0');
+						});
+						*/
 
 
-										$http.post("/importacontato", { query: $scope.empresas }).success(function (data) {
-											$scope.mensagem = { texto: "Importação ocorreu com sucesso " };
-										}).error(function (data) {
-											$scope.mensagem = { "texto: ": "Erro na importação" };
-										});
-
-									}).error(function (data) {
-										console.log('error0');
-									});
-									*/
 
 
 
-		}
+					}
 
 		// Nova função para buscar os usuarios na tela inicial do sistema
 		$scope.PesquisarContato = function(form) {
+			
+			var data = form.pBusca.$modelValue;			
+			$http.post("/busca", { query: data}).success(function (data) {
 
-			var data = form.pBusca.$modelValue;
-			$http.post("/busca", {
-					query: data
-				}).success(function(data) {
-
-					if (!data.length)
-						$scope.mensagem = {
-							texto: "error"
-						};
+				if (!data.length)
+					$scope.mensagem = {
+						texto: "error"
+					};
 
 					if (data.length)
 						$scope.mensagem = {
 							texto: data
 						};
-					$scope.contatos = data;
+						$scope.contatos = data;
 
-				})
-				.error(function(data) {
-					$scope.mensagem = {
-						"texto: ": data.mensagem
-					};
-				});
+					})
+			.error(function (data) {
+				$scope.mensagem = { "texto: ": data.mensagem };
+			});
 
 		};
 	});

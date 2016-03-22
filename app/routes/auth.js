@@ -7,13 +7,11 @@ module.exports = function(app) {
 		passport.authenticate('facebook'));
 
 	app.get('/auth/facebook/callback',
-		passport.authenticate('facebook', {
-			failureRedirect: '/login'
-		}),
+		passport.authenticate('facebook', { failureRedirect: '/login' }),
 		function(req, res) {
-			// Successful authentication, redirect home.
-			res.redirect('/');
-		});
+    		// Successful authentication, redirect home.
+    		res.redirect('/');
+	});
 
 	// GITHUB
 	app.get('/auth/github', passport.authenticate('github'));
@@ -26,5 +24,5 @@ module.exports = function(app) {
 		req.logOut(); // exposto pelo passport
 		res.redirect('/#/login');
 	});
-
+	
 }
