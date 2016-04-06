@@ -5,10 +5,10 @@ require('./config/passport')();
 require('./config/database')(
 
 	// MAQUINA LOCAL
-	//'mongodb://localhost/contatooh'
+	'mongodb://localhost/contatooh'
 
 	// MAQUINA DO SERVIDOR HEROKU
-	'mongodb://encontretudo:encontretudo@ds023448.mlab.com:23448/heroku_drxf48f5?authMode=scram-sha1'
+	//'mongodb://encontretudo:encontretudo@ds023448.mlab.com:23448/heroku_drxf48f5?authMode=scram-sha1'
 );
 
 http.createServer(app).listen(process.env.PORT || 3000, function() {

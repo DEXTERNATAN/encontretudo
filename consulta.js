@@ -9,10 +9,10 @@ MongoClient.connect(
 
 		MongoClient.connect(
 			// MAQUINA LOCAL
-			//'mongodb://127.0.0.1:27017/contatooh',
+			'mongodb://127.0.0.1:27017/contatooh',
 
 			// MAQUINA SERVIDOR HEROKU
-			'mongodb://encontretudo:encontretudo@ds023448.mlab.com:23448/heroku_drxf48f5?authMode=scram-sha1',
+			//'mongodb://encontretudo:encontretudo@ds023448.mlab.com:23448/heroku_drxf48f5?authMode=scram-sha1',
 			function(erro, db) {
 				if (erro) throw err;
 				db.collection('contatos').findOne({
