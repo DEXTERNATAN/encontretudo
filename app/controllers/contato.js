@@ -1,80 +1,96 @@
-module.exports = function (app) {
-	
+module.exports = function(app) {
+
 	var Contato = app.models.contato;
+	var sanitize = require('mongo-sanitize');
 	var controller = {};
-	
+
 	// Lista os contatos de forma geral
 	controller.listaContatos = function(req, res) {
-		
+
+		// O comando abaixo é para ordenar
+		//.sort( { nome: 1 } )
 		Contato.find().exec()
-		.then(
-			function(contatos) {
-				res.json(contatos);
-			},
-			function(erro) {
-				console.error(erro)
-				res.status(500).json(erro);
-			}
+			.then(
+				function(contatos) {
+					res.json(contatos);
+				},
+				function(erro) {
+					console.error(erro)
+					res.status(500).json(erro);
+				}
 			);
 	};
 
 	// Traz o contato pelo id
 	controller.obtemContato = function(req, res) {
-		var _id = req.params.id;
+		var _id = sanitize(req.params.id);
 		Contato.findById(_id).exec()
-		.then(
-			
-			function(contato) {
-				if (!contato) throw new Error("Contato não encontrado");
-				res.json(contato)
-			},
-			function(erro) {
-				console.log(erro);
-				res.status(404).json(erro)
-			}
+			.then(
+
+				function(contato) {
+					if (!contato) throw new Error("Contato não encontrado");
+					res.json(contato)
+				},
+				function(erro) {
+					console.log(erro);
+					res.status(404).json(erro)
+				}
 			);
 	};
 
 	// Remove o contato pelo id
 	controller.removeContato = function(req, res) {
-		var _id = req.params.id;
-		Contato.remove({"_id": _id}).exec()
+		var _id = sanitize(req.params.id);
+		Contato.remove({
+				"_id": _id
+			}).exec()
 			.then(
-				function(){
+				function() {
 					res.end();
 				},
-				function(erro){
+				function(erro) {
 					return console.error(erro);
 				}
 			);
 	};
-	
+
 	// Método para pesquisar contatos pelo nome especifico
-	controller.pesquisaContato = function(req, res){
+	controller.pesquisaContato = function(req, res) {
 
 		var data = req.body;
 		var q = data.query;
-	
-		Contato.find({"nome": { $regex : new RegExp(q, "i") }}).exec()
-		.then(function(results){
-			res.json(results);
-		}, function(){
-			res.json({code: 500, mensagem: 'Erro desconhecido'});
-		});
+
+		Contato.find({
+				/*"nome": {
+					$regex: new RegExp("/" + q, "i")
+				}*/
+				//db.users.find({
+				"nome": {
+					'$regex': new RegExp('.*' + q + '.*', "i")
+				}
+			}).exec()
+			.then(function(results) {
+				res.json(results);
+			}, function() {
+				res.json({
+					code: 500,
+					mensagem: 'Erro desconhecido'
+				});
+			});
 
 		//res.json({ data: "teste"});
 
 	};
-	
-	// Metodo para cadastrar os usuarios que querem entrear no portal	
-	controller.cadastraUsuario = function(req, res){
+
+	// Metodo para cadastrar os usuarios que querem entrear no portal
+	controller.cadastraUsuario = function(req, res) {
 		var data = req.body;
 		console.log("Cheguei no controller" + data);
 	}
 
 	// Método para Adicionar contatos importando de uma base diferente para dentro do site
-	controller.ImportarContato = function(req, res){
-		
+	controller.ImportarContato = function(req, res) {
+
 		// Recebendo os dados do formulario para fazer o cadastro
 		var data = req.body;
 		var q = data.query;
@@ -93,7 +109,7 @@ module.exports = function (app) {
 					console.log(erro);
 					res.status(500).json(erro);
 				}
-			);		
+			);
 
 		//res.json({ data: q});
 
@@ -101,35 +117,35 @@ module.exports = function (app) {
 
 	// Metodo para registrar um contato no banco de dados
 	controller.salvaContato = function(req, res) {
-		
-		var _id = req.body._id;
-		
-		if(_id) {
-			
+
+		var _id = sanitize(req.body._id);
+
+		if (_id) {
+
 			Contato.findByIdAndUpdate(_id, req.body).exec()
-			.then(
-				function(contato) {
-					res.json(contato);
-				},
-				function(erro) {
-					console.error(erro)
-					res.status(500).json(erro);
-				}
+				.then(
+					function(contato) {
+						res.json(contato);
+					},
+					function(erro) {
+						console.error(erro)
+						res.status(500).json(erro);
+					}
 				);
 
 		} else {
-			
+
 			Contato.create(req.body)
-			.then(
-				function(contato) {
-					res.status(201).json(contato);
-				},
-				function(erro) {
-					console.log(erro);
-					res.status(500).json(erro);
-				}
-			);
-				
+				.then(
+					function(contato) {
+						res.status(201).json(contato);
+					},
+					function(erro) {
+						console.log(erro);
+						res.status(500).json(erro);
+					}
+				);
+
 		};
 
 	};

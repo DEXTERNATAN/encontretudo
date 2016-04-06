@@ -1,49 +1,293 @@
-<!-- <div class="jumbotron">
-	<h1 class="text-center">
-		EncontreTudo.com.br
-	</h1>
+<style type="text/css">
+
+		#mydiv {
+				position:absolute;
+				top:0;
+				left:0;
+				width:100%;
+				height:100%;
+				z-index:1000;
+				background-color:grey;
+				opacity: .8;
+		}
+
+		.ajax-loader {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -32px; /* -1 * image width / 2 */
+				margin-top: -32px;  /* -1 * image height / 2 */
+				display: block;
+		}
+
+
+		.rating{
+			color: #a9a9a9;
+			margin: 0;
+			padding: 0;
+	}
+
+	ul.rating {
+			display: inline-block;
+	}
+
+	.rating li {
+			list-style-type: none;
+			display: inline-block;
+			padding: 1px;
+			text-align: center;
+			font-weight: bold;
+			cursor: pointer;
+	}
+
+	.rating .filled {
+			/*color: #21568b;*/
+			color: #e7711b;
+	}
+/*.star-rating.ng-isolate-scope {
+		margin-left: 55%;
+		margin-top: -2%;
+
+}*/
+
+
+.rtng {
+		color: #e7711b;
+		margin-right: 5px;
+		white-space: nowrap;
+}
+
+.redesSociais {
+		margin-top: -20px;
+		margin-left: 150px;
+}
+
+
+/*NOVA RESPONSIVA*/
+
+@media only screen and (max-width: 800px) {
+
+/* Force table to not be like tables anymore */
+#no-more-tables table,
+#no-more-tables thead,
+#no-more-tables tbody,
+#no-more-tables th,
+#no-more-tables td,
+#no-more-tables tr {
+		display: block;
+}
+
+/* Hide table headers (but not display: none;, for accessibility) */
+#no-more-tables thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+}
+
+#no-more-tables tr { border: 1px solid #ccc; }
+
+#no-more-tables td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+		white-space: normal;
+		text-align:left;
+}
+
+#no-more-tables td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		text-align:left;
+		font-weight: bold;
+}
+
+/*
+Label the data
+*/
+#no-more-tables td:before { content: attr(data-title); }
+}
+
+
+
+</style>
+
+
+
+<div class="container">
+<div class="row">
+		<div class="col-sd-12">
+				<img src="http://www.buscatudo.net/images/logo_buscatudo.jpg" alt="PegaTudo" class="img-responsive" style="margin: 0 auto;float: none; margin-bottom: 50px;">
+		</div>
 </div>
- -->
-<p ng-show="mensagem.texto">
-{{mensagem.texto}}
-</p>
-<p>&nbsp;</p>
-<!-- <button class="btn btn-primary" ng-click="incrementa()">
-	Novo
-</button> -->
-<a ng-href="#/contato" class="btn btn-primary">Novo Contato</a>
-<input ng-model="filtro" type="search" placeholder="parte do nome">
-<p ng-show="contatos.length">
-Contatos cadastrados: {{contatos.length}}
-</p>
-<p class="text-info" ng-hide="contatos.length">
-Não há contatos cadastrados
-</p>
-<div class="table-responsive">
-	<table class="table table-hover">
-		<tr>
-			<th>NOME</th>
-			<th>E-MAIL</th>
-			<th>TELEFONE</th>
-			<th></th>
-			<th class="text-center">Ação</th>
-		</tr>
-		<tr ng-repeat="contato in contatos | filter: filtro">
-			<td>
-				<a ng-href="#/contato/{{contato._id}}">{{contato.nome}}</a>
-			</td>
-			<td>{{contato.email}}</td>
-			<td>{{contato.telefone}}</td>
-			<td>
-				<a ng-href="#/visualizar/{{contato._id}}">Visualizar</a>
-			</td>
-			<td class="text-center">
-				<button
-				ng-click="remove(contato)"
-				class="btn btn-warning">
-				Remover
-			</buttom>
-		</td>
-	</tr>
-</table>
+<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+				<div class="span12" style="text-align:center; margin: 0 auto;">
+
+						<form role="search" id="formPesquisarcontato" name="formPesquisarcontato" ng-submit="PesquisarContato(formPesquisarcontato)" class="form-horizontal" style="margin: 0 auto;" >
+
+								<div class="control-group">
+										<div class="controls">
+												<input type="text" class="form-control" id="pBusca" name="pBusca" placeholder="Pesquisar estabelecimentos comerciais" required ng-model="pBusca" />
+										</div>
+										<br />
+										<button type="submit" class="btn btn-primary">Pesquisar</button>
+								</div>
+						</form>
+				</div>
+		</div>
+</div>
+<div class="col-md-2">
+</div>
+<br />
+
+<!-- <div class="spinner"><img src="/images/loading.gif"></div> -->
+<div id="mydiv" ng-show="loading">
+		<img src="/images/loading.gif" class="ajax-loader"/>
+</div>
+
+
+<div id="signupalert" style="display:block; text-align: center;" class="alert alert-danger"  ng-if="!contatos.mensagem" class="animate-if" ng-show="!contatos.length">
+		<span class="center">Nenhum registro localizado com os dados informados!!!</span>
+</div>
+
+<!-- Nova tabela responsiva -->
+<!--     <div class="container" ng-show="mensagem.texto">
+		<div class="table-responsive">
+				<table class="table table-hover">
+						<thead>
+								<tr class="info">
+										<th>Estabelecimento</th>
+										<th>Telefone</th>
+										<th>Site</th>
+										<th>Cidade/Estado</th>
+										<th>Redes Sociais</th>
+										<th>Ações</th>
+								</tr>
+						</thead>
+						<tbody>
+								<tr dir-paginate="contato in contatos | orderBy: 'nome' | itemsPerPage: pageSize" current-page="currentPage">
+										<td>{{contato.nome}}</td>
+										<td>{{contato.telefone}}</td>
+										<td><a href="{{contato.site}}" target="_blank">Acesse o site</a></td>
+										<td>{{contato.cidade}}-{{contato.estado}}</td>
+										<td>
+												<a class="btn btn-social-icon btn-facebook"><span class="fa fa-facebook"></span></a>
+												<a class="btn btn-social-icon btn-twitter "><span class="fa fa-twitter"></span></a>
+												<a class="btn btn-social-icon btn-google"><span class="fa fa-google"></span></a>
+												<a class="btn btn-social-icon btn-instagram"><span class="fa fa-instagram"></span></a>
+										</td>
+										<td>
+												<a ng-click="open('lg', contato)" class="portfolio-link" >
+														<div class="caption">
+																<div class="caption-content">
+																		<i class="fa fa-search-plus fa-3x"></i>
+																</div>
+														</div>
+												</a>
+										</td>
+								</tr>
+						</tbody>
+				</table>
+		</div>
+</div>
+-->
+<!-- RESPONSIVE TABLE -->
+<div class="container" ng-show="mensagem.texto" class="row">
+		<div class="table-responsive">
+				<p ng-show="contatos.length">Quantidade de contatos cadastrados: {{contatos.length}}</p>
+
+				<table class="table table-hover" ng-show="contatos.length">
+
+						<thead>
+								<tr class="info">
+										<!-- <th>#</th> -->
+										<th></th>
+										<th>Estabelecimento</th>
+										<th>Telefone</th>
+										<th>Site</th>
+										<th>Cidade/Estado</th>
+										<!-- <th>Estado</th>   -->
+										<th>Redes Sociais</th>
+										<th>Ações</th>
+								</tr>
+						</thead>
+
+						<tbody>
+
+								<!-- <tr ng-repeat="contato in contatos"> -->
+								<tr dir-paginate="contato in contatos | orderBy: 'nome' | itemsPerPage: pageSize" current-page="currentPage">
+										<td>
+												<img src="http://www.abbm.org.br/sistema/upload/default/sem-imagem.gif" class="img-responsive" width=
+												"110px" height="110px" alt="{{contato.nome}}">
+										</td>
+										<!-- <td>{{$index}}</td>   -->
+										<td>
+												<a ng-href="#/visualizar/{{contato._id}}" data-toggle="modal" data-target="#myModal">{{contato.nome}}</a>
+												<div ng-controller="RatingController">
+														<div ng-init="rating = star.rating + 1"></div>
+														<!-- Numero de estrelas: <span class="rtng" style="">{{nuRating(rating)}}</span> -->
+														<span class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></span>
+												</div>
+										</td>
+										<td>{{contato.telefone}}</td>
+										<td><a href="{{contato.site}}" target="_blank">Acesse o site</a></td>
+										<td>{{contato.cidade}}-{{contato.estado}}</td>
+										<!-- <td>{{contato.estado}}</td> -->
+										<td style="width: 15%;">
+												<a class="btn btn-social-icon btn-facebook"><span class="fa fa-facebook"></span></a>
+												<a class="btn btn-social-icon btn-twitter "><span class="fa fa-twitter"></span></a>
+												<a class="btn btn-social-icon btn-google"><span class="fa fa-google"></span></a>
+												<a class="btn btn-social-icon btn-instagram"><span class="fa fa-instagram"></span></a>
+										</td>
+										<td>
+												<!-- Rating -->
+												<!-- <div ng-controller="RatingController">
+
+														<h3>Rating</h3>
+														<div ng-init="rating = star.rating + 1"></div>
+
+														<div class="star-rating" star-rating rating-value="rating"
+
+														data-max="10" on-rating-selected="rateFunction(rating)"></div>
+
+
+												</div> -->
+												<a ng-click="open('lg', contato)" class="portfolio-link" >
+														<div class="caption">
+																<div class="caption-content">
+																		<div style="font-size: 2em;">
+																				<i class="fa fa-search-plus fa-3x"></i>
+																		</div>
+																</div>
+														</div>
+														<!-- <img src="{{ imovel.imagem }}" class="img-responsive" alt=""> -->
+												</a>
+										</td>
+										<!-- <td>
+												<a ng-href="#/visualizar/{{contato._id}}" data-toggle="modal" data-target="#myModal">Visualizar</a>
+										</td> -->
+								</tr>
+						</tbody>
+				</table>
+				tesyte
+				<!-- END RESPONSIVE TABLE -->
+
+				<!-- Paginação -->
+				<div ng-controller="ContatoController" class="other-controller">
+						<div class="text-center">
+								<dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+						</div>
+				</div>
+		</div>
+</div>
 </div>

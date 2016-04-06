@@ -1,8 +1,16 @@
-angular.module('contatooh', ['ngRoute', 'ngResource'])
-.config(function($routeProvider, $httpProvider) {
+angular.module('contatooh', 
+		[ 'ngRoute', 
+		  'ngResource', 
+		  'ui.bootstrap', 
+		  'angularUtils.directives.dirPagination', 
+		  'angular-loading-bar',
+		  'ngProgress' ]
+).config(function($routeProvider, $httpProvider) {
 
 	// Chamando o interceptador para capturar requisições ajax
 	$httpProvider.interceptors.push('meuInterceptor');
+
+	
 
 	$routeProvider.when('/contatos', {
 		templateUrl: 'partials/contatos.html',

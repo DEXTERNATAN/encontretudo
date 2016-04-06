@@ -9,23 +9,44 @@
 		<input type="text" class="form-control" id="nome"
 		name="nome" required ng-model="contato.nome">
 	</div>
+
 	<div class="form-group">
+		<label for="categoria">Categoria:</label>
+		<select class="form-control" id="categoria" required ng-model="contato.categoria">
+			<option value="0" selected="selected">Selecione uma categoria ...</option>
+			<option value="Bares">Bares</option>
+			<option value="Dentista">Dentista</option>
+			<option value="Sorveteria">Sorveteria</option>
+			<option value="Academias">Academias</option>
+			<option value="Advogados">Advogados</option>
+			<option value="Imobiliária">Imobiliária</option>
+			<option value="Agropecuárias e Petshop">Agropecuárias e Petshop</option>
+			<option value="Bancos">Bancos</option>
+			<option value="Concessionárias">Concessionárias</option>
+			<option value="Utensilios do lar">Utensilios do lar</option>
+			<option value="Escolas">Escolas</option>
+			<option value="Farmácias">Farmácias</option>
+		</select>
+	</div>
+<!-- Campo antigo -->
+<!-- 	<div class="form-group">
 		<label for="categoria">Categoria</label>
 		<input type="text" class="form-control" id="categoria"
-		name="categoria" required ng-model="contato.categoria">
-	</div>
+		name="categoria" required ng-model="contato.categoria" ng-change="contato.categoria=contato.categoria.toUpperCase();">
+	</div> -->
+
 	<div class="form-group">
 		<label for="endereco">Endereço</label>
 		<input type="text" class="form-control" id="endereco"
 		name="endereco" required ng-model="contato.endereco">
 	</div>
-	
+
 	<!-- 	<div class="form-group">
 		<label for="cidade">Cidade</label>
 		<input type="text" class="form-control" id="cidade"
 		name="cidade" required ng-model="contato.cidade">
 	</div> -->
-	
+
 	<div class="form-group">
 		<label for="cidade">Cidade:</label>
 		<select class="form-control" id="cidade" required ng-model="contato.cidade">
@@ -43,11 +64,11 @@
 	</div>
 -->
 <div class="form-group">
-<label for="estado">Estado:</label>
+	<label for="estado">Estado:</label>
 	<select class="form-control" id="estado" required ng-model="contato.estado">
 		<option value="0" >Selecione um estado ...</option>
 		<option value="DF">Distrito Federal</option>
-		<option value="GO">Goiania</option>
+		<option value="GO">Goiás</option>
 	</select>
 </div>
 
@@ -56,12 +77,12 @@
 	<label for="telefone">Telefone</label>
 	<input type="text" class="form-control" id="telefone"
 	name="telefone" required ng-model="contato.telefone" >
-</div>		
+</div>
 <div class="form-group">
 	<label for="site">Site</label>
 	<input type="text" class="form-control" id="site"
 	name="site" required ng-model="contato.site">
-</div>		
+</div>
 <div class="form-group">
 	<label for="email">Email</label>
 	<div class="input-group">
@@ -82,6 +103,6 @@
 		<button type="submit" class="btn btn-primary">
 			Salvar
 		</button>
-		<a href="#/" class="btn btn-default">Voltar</a>
+		<a href="#/contatos" class="btn btn-default">Voltar</a>
 	</div>
 </form>

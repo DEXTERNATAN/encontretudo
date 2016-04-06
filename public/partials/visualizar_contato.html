@@ -15,7 +15,7 @@
 		{{contato.categoria}}
 	</div>
 	<div class="form-group">
-		<label for="endereco">Endereço</label><!-- 
+		<label for="endereco">Endereço</label><!--
 		<input type="text" class="form-control" id="endereco"
 		name="endereco" required ng-model="contato.endereco"> -->
 		{{contato.endereco}}
@@ -24,27 +24,27 @@
 		<label for="cidade">Cidade</label>
 		<!-- <input type="text" class="form-control" id="cidade"
 		name="cidade" required ng-model="contato.cidade">
-		 -->{{contato.cidade}}
-	</div>
-	<div class="form-group">
-		<label for="estado">Estado</label>
+	-->{{contato.cidade}}
+</div>
+<div class="form-group">
+	<label for="estado">Estado</label>
 <!-- 		<input type="text" class="form-control" id="estado"
 		name="endereco" required ng-model="contato.estado">
- -->		{{contato.estado}}
-	</div>
+	-->		{{contato.estado}}
+</div>
 
-	<div class="form-group">
-		<label for="telefone">Telefone</label>
+<div class="form-group">
+	<label for="telefone">Telefone</label>
 		<!-- <input type="text" class="form-control" id="telefone"
 		name="telefone" required ng-model="contato.telefone" >
-		 -->{{contato.telefone}}
-	</div>		
-	<div class="form-group">
-		<label for="site">Site</label>
+	-->{{contato.telefone}}
+</div>
+<div class="form-group">
+	<label for="site">Site</label>
 		<!-- <input type="text" class="form-control" id="site"
 		name="site" required ng-model="contato.site"> -->
 		{{contato.site}}
-	</div>		
+	</div>
 	<div class="form-group">
 		<label for="email">Email</label>
 		<div class="input-group">
@@ -57,16 +57,17 @@
 	</div>
 	<div class="form-group">
 		<label for="observacao">Observação:</label>
-		<!-- <input type="text" class="form-control" id="observacao"
-		name="observacao" required ng-model="contato.observacao"> -->
-		<!-- <textarea class="form-control" rows="5" id="observacao"
-		name="observacao" required ng-model="contato.observacao"></textarea> -->
 		{{contato.observacao}}
 	</div>
+	<div class="form-group">
+		<label for="observacao">Observação:</label>
+		{{contato.observacao}}
+	</div>
+	<div class="form-group">
+		<label for="DataInclusao">Inclusão:</label>
+		{{ contato.inclusao | date:'dd/MM/yyyy - h:mma'}}
+	</div>
 	<div>
-		<!-- <button type="submit" class="btn btn-primary">
-			Salvar
-		</button>
-		 --><a href="#/" class="btn btn-default">Voltar</a>
+		<a href="#/contatos" class="btn btn-default">Voltar</a>
 	</div>
 </form>
