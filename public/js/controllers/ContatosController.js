@@ -25,7 +25,7 @@ angular.module('contatooh').controller('ContatosController',
 
   		$rootScope.$on("$routeChangeSuccess", function () {
   			$rootScope.progressbar.complete();
-  			/*$templateCache.removeAll();*/
+  			$templateCache.removeAll();
   		});
 
 
